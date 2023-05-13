@@ -13,6 +13,7 @@ in {
 
   config = mkIf cfg.enable {
     myPrograms = {
+      git.enable = true;
       neovim.enable = true;
     };
     myServices = {

@@ -80,6 +80,8 @@ in {
 
     ## configuration.nix
 
+    system.stateVersion = "22.11";
+
     boot.tmp.cleanOnBoot = true;
     zramSwap.enable = true;
 
@@ -87,7 +89,9 @@ in {
 
     services.openssh = {
       enable = true;
-      permitRootLogin = "yes";
+      settings = {
+        permitRootLogin = "yes";
+      };
     };
     users.users.root.openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFCcOm5bv/HZtyaavJ0xBFvZJ6fLfuUxhtFj1UU7YXfi" # nixos

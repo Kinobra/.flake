@@ -75,7 +75,7 @@ in {
 
     system.stateVersion = "22.11";
 
-    boot.cleanTmpDir = true;
+    boot.tmp.cleanOnBoot = true;
     zramSwap.enable = true;
   };
 }

@@ -14,10 +14,12 @@ in {
   config = mkIf cfg.enable {
     services.openssh = {
       enable = true;
-      permitRootLogin = "yes";
-      passwordAuthentication = false;
+      settings = {
+        permitRootLogin = "yes";
+        passwordAuthentication = false;
+      };
     };
-    user.openssh.authorizedKeys.keys = [
+    users.users.root.openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFCcOm5bv/HZtyaavJ0xBFvZJ6fLfuUxhtFj1UU7YXfi" # nixos
     ];
   };

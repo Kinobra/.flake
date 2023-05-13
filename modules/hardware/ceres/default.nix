@@ -12,91 +12,143 @@ in {
   };
 
   config = mkIf cfg.enable {
+    # Common configuration for virtual machines running under QEMU (using
+    # virtio).
+    boot.initrd.availableKernelModules = [
+      "virtio_net" "virtio_pci" "virtio_mmio" "virtio_blk" "virtio_scsi" "9p" "9pnet_virtio" # module
+      "ata_piix" "virtio_pci" "virtio_scsi" "xhci_pci" "sd_mod" "sr_mod" # hardware-configuration
+    ];
+    boot.initrd.kernelModules = [ "virtio_balloon" "virtio_console" "virtio_rng" ];
+    boot.initrd.postDeviceCommands = lib.mkIf (!config.boot.initrd.systemd.enable)
+      ''
+        # Set the system time from the hardware clock to work around a
+        # bug in qemu-kvm > 1.5.2 (where the VM clock is initialised
+        # to the *boot time* of the host).
+        hwclock -s
+      '';
 
     ## hardware-configuration.nix
+    boot.kernelModules = [ ];
+    boot.extraModulePackages = [ ];
 
-    boot.loader.grub.device = "/dev/sda";
-    boot.initrd.availableKernelModules = [
-      "virtio_net" "virtio_pci" "virtio_mmio" "virtio_blk" "virtio_scsi" "9p" "9pnet_virtio" # qemu
-      "ata_piix" "uhci_hcd" "xen_blkfront" "vmw_pvscsi" # auto generated
-    ];
-    boot.initrd.kernelModules = [
-      "virtio_balloon" "virtio_console" "virtio_rng" # qemu
-      "nvme" # auto generated
-    ];
-    boot.initrd.postDeviceCommands = lib.mkIf (!config.boot.initrd.systemd.enable)
-    ''
-      # Set the system time from the hardware clock to work around a
-      # bug in qemu-kvm > 1.5.2 (where the VM clock is initialised
-      # to the *boot time* of the host).
-      hwclock -s
-    '';
-
-    fileSystems."/" = {
-      device = "/dev/sda1";
-      fsType = "ext4";
-    };
-
-    ## networking.nix
-    # generated at runtime by nixos-infect
-
-    networking = {
-      nameservers = [
-        "2a01:4ff:ff00::add:2"
-        "2a01:4ff:ff00::add:1"
-        "185.12.64.2"
-      ];
-
-      defaultGateway = "172.31.1.1";
-      defaultGateway6 = {
-        address = "fe80::1";
-        interface = "eth0";
+    fileSystems."/" =
+      { device = "/dev/disk/by-uuid/e2a01644-091e-4df6-a2cf-78b4be9a32c2";
+        fsType = "ext4";
       };
 
-      dhcpcd.enable = false;
-      usePredictableInterfaceNames = lib.mkForce false;
-      interfaces = {
-        eth0 = {
-          ipv4.addresses = [
-            { address="91.107.221.240"; prefixLength=32; }
-          ];
-          ipv6.addresses = [
-            { address="2a01:4f8:c012:d756::1"; prefixLength=64; }
-            { address="fe80::9400:2ff:fe2f:7426"; prefixLength=64; }
-          ];
-          ipv4.routes = [
-            { address = "172.31.1.1"; prefixLength = 32; }
-          ];
-          ipv6.routes = [
-            { address = "fe80::1"; prefixLength = 128; }
-          ];
-        };
-      };
-    };
+    swapDevices = [ ];
 
-    services.udev.extraRules = ''
-      ATTR{address}=="96:00:02:2f:74:26", NAME="eth0"
-    '';
+    # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
+    # (the default) this is the recommended approach. When using systemd-networkd it's
+    # still possible to use this option, but it's recommended to use it in conjunction
+    # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
+    networking.useDHCP = lib.mkDefault true;
+    # networking.interfaces.ens3.useDHCP = lib.mkDefault true;
+
+    nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+    hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
     ## configuration.nix
 
-    system.stateVersion = "22.11";
+    # Use the GRUB 2 boot loader.
+    boot.loader.grub.enable = true;
+    boot.loader.grub.version = 2;
+    # boot.loader.grub.efiSupport = true;
+    # boot.loader.grub.efiInstallAsRemovable = true;
+    # boot.loader.efi.efiSysMountPoint = "/boot/efi";
+    # Define on which hard drive you want to install Grub.
+    boot.loader.grub.device = "/dev/sda";
 
-    boot.tmp.cleanOnBoot = true;
-    zramSwap.enable = true;
+    # networking.hostName = "nixos"; # Define your hostname.
+    # Pick only one of the below networking options.
+    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+    # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
-    ## ssh.nix
+    # Set your time zone.
+    # time.timeZone = "Europe/Amsterdam";
 
-    services.openssh = {
-      enable = true;
-      settings = {
-        permitRootLogin = "yes";
-        passwordAuthentication = false;
-      };
-    };
-    users.users.root.openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFCcOm5bv/HZtyaavJ0xBFvZJ6fLfuUxhtFj1UU7YXfi" # nixos
-    ];
-    networking.firewall.allowedTCPPorts = [ 22 ];
+    # Configure network proxy if necessary
+    # networking.proxy.default = "http://user:password@proxy:port/";
+    # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
+    # Select internationalisation properties.
+    # i18n.defaultLocale = "en_US.UTF-8";
+    # console = {
+    #   font = "Lat2-Terminus16";
+    #   keyMap = "us";
+    #   useXkbConfig = true; # use xkbOptions in tty.
+    # };
+
+    # Enable the X11 windowing system.
+    # services.xserver.enable = true;
+
+
+    
+
+    # Configure keymap in X11
+    # services.xserver.layout = "us";
+    # services.xserver.xkbOptions = {
+    #   "eurosign:e";
+    #   "caps:escape" # map caps to escape.
+    # };
+
+    # Enable CUPS to print documents.
+    # services.printing.enable = true;
+
+    # Enable sound.
+    # sound.enable = true;
+    # hardware.pulseaudio.enable = true;
+
+    # Enable touchpad support (enabled default in most desktopManager).
+    # services.xserver.libinput.enable = true;
+
+    # Define a user account. Don't forget to set a password with ‘passwd’.
+    # users.users.alice = {
+    #   isNormalUser = true;
+    #   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    #   packages = with pkgs; [
+    #     firefox
+    #     thunderbird
+    #   ];
+    # };
+
+    # List packages installed in system profile. To search, run:
+    # $ nix search wget
+    # environment.systemPackages = with pkgs; [
+    #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #   wget
+    # ];
+
+    # Some programs need SUID wrappers, can be configured further or are
+    # started in user sessions.
+    # programs.mtr.enable = true;
+    # programs.gnupg.agent = {
+    #   enable = true;
+    #   enableSSHSupport = true;
+    # };
+
+    # List services that you want to enable:
+
+    # Enable the OpenSSH daemon.
+    # services.openssh.enable = true;
+
+    # Open ports in the firewall.
+    # networking.firewall.allowedTCPPorts = [ ... ];
+    # networking.firewall.allowedUDPPorts = [ ... ];
+    # Or disable the firewall altogether.
+    # networking.firewall.enable = false;
+
+    # Copy the NixOS configuration file and link it from the resulting system
+    # (/run/current-system/configuration.nix). This is useful in case you
+    # accidentally delete configuration.nix.
+    # system.copySystemConfiguration = true;
+
+    # This value determines the NixOS release from which the default
+    # settings for stateful data, like file locations and database versions
+    # on your system were taken. It‘s perfectly fine and recommended to leave
+    # this value at the release version of the first install of this system.
+    # Before changing this value read the documentation for this option
+    # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+    system.stateVersion = "22.11"; # Did you read the comment?
   };
 }

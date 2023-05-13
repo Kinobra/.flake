@@ -13,17 +13,17 @@ in {
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      neovim
-      git
+      # neovim
+      # git
       lf
     ];
-    # myPrograms = {
-    #   git.enable = true;
-    #   neovim.enable = true;
-    # };
-    # myServices = {
-    #   # fail2ban.enable = true;
-    #   openssh.enable = true;
-    # };
+    myPrograms = {
+      git.enable = true;
+      neovim.enable = true;
+    };
+    myServices = {
+      # fail2ban.enable = true;
+      openssh.enable = true;
+    };
   };
 }

@@ -1,0 +1,29 @@
+{ config, lib, pkgs, ... }:
+{
+  imports = [
+    ./bottles
+    ./brave
+    ./cryptomator
+    ./direnv
+    ./discord
+    ./firefox
+    ./gaming
+    ./git
+    ./gpg
+    ./helvum
+    ./imv
+    ./keepassxc
+    ./kitty
+    ./lf
+    ./librewolf
+    ./monero-gui
+    ./mpv
+    ./neovim
+    ./nushell
+    ./signal
+    ./swaylock
+    ./waybar
+    ./yt-dlp
+    ./zathura
+  ];
+}

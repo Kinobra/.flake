@@ -21,7 +21,7 @@ in {
         passwordAuthentication = false;
       };
     };
-    users.users.root.openssh.authorizedKeys.keys = [
+    users.users."${config.user.name}".openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFCcOm5bv/HZtyaavJ0xBFvZJ6fLfuUxhtFj1UU7YXfi" # nixos
     ];
   };

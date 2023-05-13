@@ -13,7 +13,7 @@ in {
 
   config = mkIf cfg.enable {
     myServices = {
-      fail2ban.enable = true;
+      # fail2ban.enable = true;
       openssh.enable = true;
     };
   };

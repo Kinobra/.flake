@@ -36,6 +36,7 @@ in {
       virt-manager
     ];
 
+    # users.users."${config.user.name}".extraGroups = [ "libvirtd" ];
     virtualisation.libvirtd.enable = true;
     # home.dconf.enable = true;
     programs.dconf.enable = true;

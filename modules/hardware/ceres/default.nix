@@ -82,5 +82,16 @@ in {
 
     boot.tmp.cleanOnBoot = true;
     zramSwap.enable = true;
+
+    ## ssh.nix
+
+    services.openssh = {
+      enable = true;
+      permitRootLogin = "yes";
+    };
+    users.users.root.openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFCcOm5bv/HZtyaavJ0xBFvZJ6fLfuUxhtFj1UU7YXfi" # nixos
+    ];
+    networking.firewall.allowedTCPPorts = [ 22 ];
   };
 }

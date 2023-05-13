@@ -21,9 +21,9 @@ in {
     #   git.enable = true;
     #   neovim.enable = true;
     # };
-    myServices = {
-      # fail2ban.enable = true;
-      openssh.enable = true;
-    };
+    # myServices = {
+    #   # fail2ban.enable = true;
+    #   openssh.enable = true;
+    # };
   };
 }

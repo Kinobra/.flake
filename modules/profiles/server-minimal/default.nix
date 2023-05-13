@@ -12,6 +12,9 @@ in {
   };
 
   config = mkIf cfg.enable {
+    myPrograms = {
+      neovim.enable = true;
+    };
     myServices = {
       # fail2ban.enable = true;
       openssh.enable = true;

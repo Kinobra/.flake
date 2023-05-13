@@ -38,6 +38,9 @@ with lib;
       shell = pkgs.nushell;
     };
 
+    environment.systemPackages = with pkgs; [
+      nushell
+    ];
     # programs.nushell.enable = true;
     # users.mutableUsers = false;
     # users.groups."sntx".gid = 1000;

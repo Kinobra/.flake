@@ -22,6 +22,7 @@ in {
     };
     myServices = {
       fail2ban.enable = true;
+      nix.enable = true;
       openssh.enable = true;
     };
   };

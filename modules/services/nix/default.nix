@@ -26,8 +26,8 @@ in {
         # keep-outputs = true;
         # keep-derivations = true;
         auto-optimise-store = true;
-        cores = 32;
-        max-jobs = 32;
+        # cores = 32;
+        # max-jobs = 32;
         sandbox = true;
         experimental-features = [ "nix-command" "flakes" ];
       };

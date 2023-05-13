@@ -32,7 +32,10 @@ in {
       hwclock -s
     '';
 
-    fileSystems."/" = { device = "/dev/sda1"; fsType = "ext4"; };
+    fileSystems."/" = {
+      device = "/dev/sda1";
+      fsType = "ext4";
+    };
 
     ## networking.nix
     # generated at runtime by nixos-infect
@@ -61,8 +64,12 @@ in {
             { address="2a01:4f8:c012:d756::1"; prefixLength=64; }
             { address="fe80::9400:2ff:fe2f:7426"; prefixLength=64; }
           ];
-          ipv4.routes = [ { address = "172.31.1.1"; prefixLength = 32; } ];
-          ipv6.routes = [ { address = "fe80::1"; prefixLength = 128; } ];
+          ipv4.routes = [
+            { address = "172.31.1.1"; prefixLength = 32; }
+          ];
+          ipv6.routes = [
+            { address = "fe80::1"; prefixLength = 128; }
+          ];
         };
       };
     };
@@ -72,8 +79,6 @@ in {
     '';
 
     ## configuration.nix
-
-    system.stateVersion = "22.11";
 
     boot.tmp.cleanOnBoot = true;
     zramSwap.enable = true;

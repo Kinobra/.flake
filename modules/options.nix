@@ -35,7 +35,6 @@ with lib;
       # in if elem name [ "" "root" ] then "sntx" else name;
       # uid = 1000;
       # passwordFile = "/var/secrets/${config.user.name}-password";
-      initialPassword = "changeme_qcPBYwFZ";
       shell = pkgs.nushell;
     };
 

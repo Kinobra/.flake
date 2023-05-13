@@ -12,10 +12,15 @@ in {
   };
 
   config = mkIf cfg.enable {
-    myPrograms = {
-      git.enable = true;
-      neovim.enable = true;
-    };
+    home.programs = with pkgs; [
+      neovim
+      git
+      lf
+    ];
+    # myPrograms = {
+    #   git.enable = true;
+    #   neovim.enable = true;
+    # };
     myServices = {
       # fail2ban.enable = true;
       openssh.enable = true;

@@ -20,15 +20,11 @@ in {
       theme = "dark"; # light
     };
     cursor = {
-      name = "phinger-cursors";
-      package = pkgs.phinger-cursors;
-      size = 24;
+      package = pkgs.callPackage ./cursor/google-cursor-white.nix {};
+      size = 16;
     };
   in mkIf cfg.enable {
-    home.packages = with pkgs; [
-      adw-gtk3
-      phinger-cursors
-    ];
+    home.packages = with pkgs; [ adw-gtk3 ];
 
     # fonts
     fonts = {
@@ -49,27 +45,28 @@ in {
     };
 
     # gtk theming
-    home.configFile = {
-      "gtk-2.0/gtkfilechooser.ini".source = ./gtk/2.0/gtkfilechooser.ini;
-      "gtk-3.0/gtk.css".source = ./gtk/3.0/gtk.css;
-      "gtk-4.0/gtk.css".source = ./gtk/4.0/gtk.css;
-    };
-    programs.dconf.enable = true;
+    # programs.dconf.enable = true;
     home.dconf = {
-      # enable = true;
+      enable = true;
       settings = {
         "org/gnome/desktop/interface" = {
           color-scheme = "prefer-${colors.theme}";
         };
       };
     };
+    home.configFile = {
+      "gtk-2.0/gtkfilechooser.ini".source = ./gtk/2.0/gtkfilechooser.ini;
+      "gtk-3.0/gtk.css".source = ./gtk/3.0/gtk.css;
+      "gtk-4.0/gtk.css".source = ./gtk/4.0/gtk.css;
+    };
+
     home.pointerCursor = {
-      name = "${cursor.name}";
+      name = "${cursor.package.package-name}";
       package = cursor.package;
       size = cursor.size;
       x11 = {
         enable = true;
-        defaultCursor = "${cursor.name}";
+        defaultCursor = "${cursor.package.package-name}";
       };
       gtk.enable = true;
     };

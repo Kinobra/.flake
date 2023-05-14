@@ -102,10 +102,13 @@ in
         output."*" = { bg = "~/.config/sway/bg.png fill"; };
 
         seat."*" = let
-          cursor = "${config.home.pointerCursor.name}";
+          cursor = {
+            name = "${config.home.pointerCursor.name}";
+            size = config.home.pointerCursor.size;
+          };
         in {
           hide_cursor = "when-typing enable";
-          xcursor_theme = "${cursor} 24";
+          xcursor_theme = "${cursor.name} ${toString cursor.size}";
         };
 
         startup = [

@@ -1,9 +1,5 @@
 # sntx's NixOS Flake
 
-<!-- badges -->
-
-[![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
-
 <!-- intro -->
 
 Welcome to my flake!
@@ -37,3 +33,7 @@ I setup my servers with the help of this [Gist](https://gist.github.com/cyber-mu
 ## Special Thanks
 
 This config is inspired by and partially based on [dunklecat's nixos-config](https://git.sr.ht/~dunklecat/nixos-config).
+
+<!-- badges -->
+
+[![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)

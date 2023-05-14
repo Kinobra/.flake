@@ -1,5 +1,21 @@
 # sntx's NixOS Flake
 
+<!-- badges -->
+
+[![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
+
+<!-- intro -->
+
+Welcome to my flake!
+
+---
+
+## Remote Install
+
+### Hetzner Cloud
+
+I setup my servers with the help of this [Gist](https://gist.github.com/cyber-murmel/8b726b45047907a842a9dc9db2618b0a).
+
 ## TODO
 
 ### Ideas
@@ -17,12 +33,6 @@
 
 * myDesktops.sway
   SwayFX Blur
-
-## Remote Install
-
-### Hetzner Cloud
-
-I have setup my servers with the help of this [Gist](https://gist.github.com/cyber-murmel/8b726b45047907a842a9dc9db2618b0a).
 
 ## Special Thanks
 

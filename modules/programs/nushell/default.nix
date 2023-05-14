@@ -90,6 +90,7 @@ in {
         alias gl = git log
         alias gd = git pull
         alias gu = git push
+        alias gui = gitui
 
         # cat -> bat
         alias cat = bat

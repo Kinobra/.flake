@@ -21,7 +21,7 @@ in {
       clientCertRequired = true;
     };
 
-    services.nginx.virtualHosts = mkIf services.nginx.enable {
+    services.nginx.virtualHosts = mkIf options.myServices.nginx.enable {
       "murmur.${networking.domain}" = let
         murmur = config.myServices.murmur;
       in mkIf murmur.enable {

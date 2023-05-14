@@ -3,7 +3,7 @@
 <!-- intro -->
 
 Welcome to my flake!
-The system configuration equivalent of dotfiles.
+The systems configuration equivalent of dotfiles.
 
 ---
 

@@ -7,7 +7,9 @@
     ./hedgedoc
     ./mako
     ./mpd
+    ./murmur
     ./nebula
+    ./nginx
     ./nix
     ./openssh
     ./pipewire

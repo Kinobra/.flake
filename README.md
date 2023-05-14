@@ -14,8 +14,6 @@ My system configurations equivalent of dotfiles.
 Screenshot of the Desktop
 </p>
 
----
-
 ## Overview
 
 This flake splits the aspects of my system configuration into different modules
@@ -28,7 +26,7 @@ It can have one `myDesktops`, multiple `myProfiles`, `myPrograms` and
 `myServices` modules and optionally one `myThemes` module.
 * `myDesktops` contains modules for desktop environments.
 * `myProfiles` is a special module since it links to modules in `myPrograms` and
-`myServices`.
+`myServices`. you can think of it as a collection of modules for a specific purpose.
 * `myPrograms` & `myServices` contain applications that either run as a program
 or a service.
 * `myThemes` is a module that provides overrides to achive a specific look for a
@@ -63,5 +61,5 @@ This config is inspired by and partially based on [dunklecat's nixos-config](htt
 <!-- badges -->
 
 <p style="text-align: center;">
-[![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
+<a href="https://builtwithnix.org"><img src="https://builtwithnix.org/badge.svg" alt="built with nix"></a>
 </p>

@@ -13,9 +13,5 @@ in {
 
   config = mkIf cfg.enable {
     myProfiles.server-minimal.enable = true;
-
-    myServices = {
-      hedgedoc.enable = true;
-    };
   };
 }

@@ -11,10 +11,15 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # my custom programs
+    nx-fetch.url = "sourcehut:~sntx/nx-fetch";
+    nx-gen.url = "sourcehut:~sntx/nx-gen";
+    nx-pkgs.url = "sourcehut:~sntx/nx-pkgs";
   };
 
   # Output config, or config for NixOS system
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, nx-fetch, nx-gen, nx-pkgs, ... }@inputs: {
     # You can define many systems in one Flake file.
     # NixOS will choose one based on your hostname.
 
@@ -49,6 +54,12 @@
           myProfiles.desktop-minimal.enable = true;
           myHardware.minerva.enable = true;
           myThemes.sagittarius-a-star.enable = true;
+
+          environment.systemPackages = [
+            nx-fetch.packages."x86_64-linux".default
+            nx-gen.packages."x86_64-linux".default
+            nx-pkgs.packages."x86_64-linux".default
+          ];
         }
       ];
     };
@@ -65,6 +76,12 @@
           myProfiles.desktop.enable = true;
           myHardware.nixos.enable = true;
           myThemes.sagittarius-a-star.enable = true;
+
+          environment.systemPackages = [
+            nx-fetch.packages."x86_64-linux".default
+            nx-gen.packages."x86_64-linux".default
+            nx-pkgs.packages."x86_64-linux".default
+          ];
         }
       ];
     };

@@ -21,8 +21,8 @@ in {
       clientCertRequired = true;
     };
 
-    services.nginx.virtualHosts = mkIf options.myServices.nginx.enable {
-      "murmur.${networking.domain}" = let
+    services.nginx.virtualHosts = mkIf config.myServices.nginx.enable {
+      "murmur.${config.networking.domain}" = let
         murmur = config.myServices.murmur;
       in mkIf murmur.enable {
         forceSSL = true;

@@ -18,7 +18,7 @@ in {
 
     security.acme = {
       acceptTerms = true;
-      defaults.email = "${config.user.name}@${networking.domain}";
+      defaults.email = "${config.user.name}@${config.networking.domain}";
     };
   };
 }

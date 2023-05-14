@@ -23,3 +23,7 @@
 ### Hetzner Cloud
 
 I have setup my servers with the help of this [Gist](https://gist.github.com/cyber-murmel/8b726b45047907a842a9dc9db2618b0a).
+
+## Special Thanks
+
+This config is inspired by and partially based on [dunklecat's nixos-config](https://git.sr.ht/~dunklecat/nixos-config).

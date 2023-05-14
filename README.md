@@ -37,18 +37,25 @@ system.
 1. Read this [installation guide](https://nixos.wiki/wiki/NixOS_Installation_Guide)
 from the NixOS Wiki. If you want to use BTRFS, then I'd recommend following
 [this post from kolaente](https://blog.kolaente.de/2021/11/installing-nixos-with-encrypted-btrfs-root-device-and-home-manager-from-start-to-finish/).
-If you are installing remotely to the Hetzner Cloud, take a look at this
+And if you are installing remotely to the Hetzner Cloud, take a look at this
 [Gist](https://gist.github.com/cyber-murmel/8b726b45047907a842a9dc9db2618b0a).
 1. After reaching a minimal working system, duplicate the `-template-` in
-`./modules/hardware` copy the contents of your
+`./modules/hardware` and copy the contents of your
 `/etc/nixos/{configuration.nix,hardware-configuration.nix}` into it after
 renaming the files/placeholder-names to match your new system.
-1. To then switch the configuration to this flake, run:
-
-  ```sh
-  sudo nixos-rebuild boot --flake sourcehut:~sntx/flake#<new_system_name>
-  reboot
-  ```
+1. Push the updated config with the new system to you repo.
+1. Then to switch the configuration to this flake, run:
+    ```sh
+    sudo nixos-rebuild boot --flake sourcehut:~sntx/flake#<new_system_name>
+    reboot
+    ```
+1. (Optional) In the new system, clone the repo into `~/.flake` and symlink it
+to `/etc/nixos` with:
+    ```sh
+    git clone https://git.sr.ht/~sntx/flake ~/.flake
+    mv /etc/nixos /etc/nixos.bak
+    ln -s ~/.flake /etc/nixos
+    ```
 
 ## Features
 

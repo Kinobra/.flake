@@ -4,6 +4,7 @@
     # ./borgbackup
     ./easyeffects
     ./fail2ban
+    ./hedgedoc
     ./mako
     ./mpd
     ./nebula

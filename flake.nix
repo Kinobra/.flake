@@ -36,7 +36,7 @@
         {
           networking.domain = "";
           networking.hostName = "ceres";
-          myProfiles.server-minimal.enable = true;
+          myProfiles.server.enable = true;
           myHardware.ceres.enable = true;
         }
       ];

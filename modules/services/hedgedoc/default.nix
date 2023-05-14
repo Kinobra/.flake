@@ -1,10 +1,10 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-let cfg = config.myProfiles.server;
+let cfg = config.myServices.hedgedoc;
 
 in {
-  options.myProfiles.server = {
+  options.myServices.hedgedoc = {
     enable = mkOption {
       type = types.bool;
       default = false;
@@ -12,10 +12,8 @@ in {
   };
 
   config = mkIf cfg.enable {
-    myProfiles.server-minimal.enable = true;
-
-    myServices = {
-      hedgedoc.enable = true;
+    services.hedgedoc = {
+      enable = true;
     };
   };
 }

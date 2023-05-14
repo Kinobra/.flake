@@ -84,6 +84,13 @@ in {
         alias tarJ = tar --remove-files --use-compress-program='xz -T0' -cvf
         #new-file-name #folder-to-be-compressed
 
+        # git (gu/gd -> git "up"/"down")
+        alias gs = git status
+        alias gc = git commit
+        alias gl = git log
+        alias gd = git pull
+        alias gu = git push
+
         # cat -> bat
         alias cat = bat
 

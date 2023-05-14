@@ -386,11 +386,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1684091377,
-        "narHash": "sha256-qP1AN7cmyOCdgDdiv5gcGDLjvMLHl4Tjnefm1YuW16w=",
+        "lastModified": 1684092035,
+        "narHash": "sha256-+mCbG7gleLnENR3NxZoI+XtU+gKFCyurpWvvTsfRp48=",
         "owner": "~sntx",
         "repo": "nx-gen",
-        "rev": "9478bccb96393af88a3a6f9de0535cb9932a4272",
+        "rev": "510591b4dcbd27b6bcaad24bc5ea9830a06fbbfb",
         "type": "sourcehut"
       },
       "original": {

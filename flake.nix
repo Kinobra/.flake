@@ -27,7 +27,7 @@
     # Juno, Vesta, Minerva, Ceres, Diana, Venus,
     # Mars, Mercurius, Iovis, Neptunus, Vulcanus, Apollo
 
-    # Define a system called "minerva"
+    # Define a system called "ceres"
     nixosConfigurations."ceres" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [

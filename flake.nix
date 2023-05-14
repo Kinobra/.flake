@@ -34,7 +34,7 @@
         home-manager.nixosModules.home-manager
         (import ./modules)
         {
-          networking.domain = "";
+          networking.domain = "valkyrja.eu";
           networking.hostName = "ceres";
           myProfiles.server.enable = true;
           myHardware.ceres.enable = true;

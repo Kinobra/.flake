@@ -18,7 +18,7 @@ in {
 
     security.acme = {
       acceptTerms = true;
-      defaults.email = "sntx@valkyrja.eu";
+      defaults.email = "${config.user.name}@${networking.domain}";
     };
   };
 }

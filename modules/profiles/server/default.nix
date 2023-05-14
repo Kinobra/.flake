@@ -13,5 +13,10 @@ in {
 
   config = mkIf cfg.enable {
     myProfiles.server-minimal.enable = true;
+
+    myServices = {
+      nginx.enable = true;
+      murmur.enable = true;
+    };
   };
 }

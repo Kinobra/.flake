@@ -36,7 +36,7 @@
         {
           networking.domain = "valkyrja.eu";
           networking.hostName = "ceres";
-          myProfiles.server.enable = true;
+          myProfiles.server-minimal.enable = true;
           myHardware.ceres.enable = true;
 
           environment.systemPackages = [

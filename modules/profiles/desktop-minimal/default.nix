@@ -18,7 +18,7 @@ in {
 
     system.autoUpgrade = {
       enable = true;
-      flake = "path:/home/${config.user.name}/.flake";
+      flake = "git+file:/home/${config.user.name}/.flake";
       flags = [
         "--update-input" "nixpkgs"
         "--update-input" "home-manager"

@@ -38,12 +38,6 @@
           networking.hostName = "ceres";
           myProfiles.server-minimal.enable = true;
           myHardware.ceres.enable = true;
-
-          environment.systemPackages = [
-            nx-fetch.packages."x86_64-linux".default
-            nx-gen.packages."x86_64-linux".default
-            nx-pkgs.packages."x86_64-linux".default
-          ];
         }
       ];
     };

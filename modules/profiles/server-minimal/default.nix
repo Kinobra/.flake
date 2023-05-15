@@ -15,11 +15,23 @@ in {
     home.packages = with pkgs; [
       git
     ];
+
+    system.autoUpgrade = {
+      enable = true;
+      flake = "sourcehut:~sntx/flake";
+      allowReboot = true;
+      rebootWindow = {
+        lower = "01:00";
+        upper = "02:00";
+      };
+    };
+
     myPrograms = {
       lf.enable = true;
       nushell.enable = true;
       neovim.enable = true;
     };
+
     myServices = {
       fail2ban.enable = true;
       nix.enable = true;

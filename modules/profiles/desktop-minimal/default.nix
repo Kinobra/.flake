@@ -16,6 +16,16 @@ in {
       xdg-utils			# for opening default programs when clicking links
     ];
 
+    system.autoUpgrade = {
+      enable = true;
+      flake = "path:/home/${config.user.name}/.flake";
+      flags = [
+        "--update-input" "nixpkgs"
+        "--update-input" "home-manager"
+        "--commit-lock-file"
+      ];
+    };
+
     myPrograms = {
       direnv.enable = true;
       firefox.enable = true;

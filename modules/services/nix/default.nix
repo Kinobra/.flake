@@ -32,8 +32,5 @@ in {
         experimental-features = [ "nix-command" "flakes" ];
       };
     };
-
-    system.autoUpgrade.enable = true;
-    system.autoUpgrade.allowReboot = false;
   };
 }

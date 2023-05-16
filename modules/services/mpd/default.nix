@@ -26,7 +26,7 @@ in {
         }
       '';
       network = {
-        startWhenNeeded = false;
+        startWhenNeeded = true;
         listenAddress = "127.0.0.1";
         port = 6600;
       };

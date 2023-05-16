@@ -27,11 +27,9 @@ in
 
     home.packages = with pkgs; [
       wl-clipboard 		# wl-copy and wl-paste for copy/paste from stdin / stdout
-      # mpvpaper
     ];
 
     environment.systemPackages = with pkgs; [
-      # wayland
       swayfx
     ];
 
@@ -115,7 +113,7 @@ in
           background-init = pkgs.writeScript "background-init"
             ''
               ${pkgs.swww}/bin/swww init
-              ${pkgs.swww}/bin/swww img ~/.config/sway/bg.png
+              ${pkgs.swww}/bin/swww img /home/${config.user.name}/.config/sway/bg.png
             '';
         in [
           { command = "exec ${pkgs.autotiling-rs}/bin/autotiling-rs"; }

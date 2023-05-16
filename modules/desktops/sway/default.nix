@@ -15,6 +15,7 @@ in
   config = mkIf cfg.enable {
     myPrograms = {
       waybar.enable = true;
+      swww.enable = true;
       # swaylock.enable = true;
     };
 
@@ -99,7 +100,6 @@ in
         floating = { border = borders; };
 
         input."*" = { accel_profile = "flat"; };
-        output."*" = { bg = "~/.config/sway/bg.png fill"; };
 
         seat."*" = let
           cursor = {
@@ -111,9 +111,16 @@ in
           xcursor_theme = "${cursor.name} ${toString cursor.size}";
         };
 
-        startup = [
+        startup = let
+          background-init = pkgs.writeScript "background-init"
+            ''
+              ${pkgs.swww}/bin/swww init
+              ${pkgs.swww}/bin/swww img ~/.config/sway/bg.png
+            '';
+        in [
           { command = "exec ${pkgs.autotiling-rs}/bin/autotiling-rs"; }
           { command = "exec ${pkgs.easyeffects}/bin/easyeffects"; }
+          { command = "exec ${background-init}"; }
         ];
 
         keybindings = let

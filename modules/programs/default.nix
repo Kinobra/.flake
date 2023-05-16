@@ -22,6 +22,7 @@
     ./nushell
     ./signal
     ./swaylock
+    ./swww
     ./waybar
     ./yt-dlp
     ./zathura

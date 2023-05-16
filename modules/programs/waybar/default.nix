@@ -118,7 +118,120 @@ in {
           };
         };
       };
-      style = ./style.css;
+      style = let
+        margin = 6;
+        border-radius = 6;
+        padding-vertical = 2;
+        padding-horizontal = 4;
+        padding-inner = 4;
+        unit = "px";
+      in ''
+        * {
+          color: #dddddd;
+          font-family: "Fira Code Semibold";
+          font-size: 16px;
+
+          border: none;
+          border-radius: ${toString border-radius}${unit};
+
+          padding: 0px 0px 0px 0px;
+          margin: 0px 0px 0px 0px;
+        }
+
+        #waybar {
+          background: transparent;
+        }
+
+        .modules-left,
+        .modules-center,
+        .modules-right {
+          margin:
+            ${toString margin}${unit}
+            ${toString margin}${unit}
+            0px
+            ${toString margin}${unit};
+          background-color: #121212;
+        }
+        .modules-left {
+          padding-right: ${toString padding-horizontal}${unit};
+        }
+        .modules-right {
+          padding-left: ${toString padding-horizontal}${unit};
+        }
+
+        #mode,
+        #custom-cpu,
+        #custom-gpu,
+        #battery
+        {
+          padding:
+            ${toString padding-vertical}${unit}
+            ${toString padding-inner}${unit}
+            ${toString padding-vertical}${unit}
+            ${toString padding-inner}${unit};
+        }
+
+        #custom-menu {
+          background-color: black;
+          border-radius:
+            ${toString border-radius}${unit}
+            0px
+            0px
+            ${toString border-radius}${unit};
+          padding:
+            ${toString padding-vertical}${unit}
+            ${toString (padding-horizontal + padding-inner)}${unit}
+            ${toString padding-vertical}${unit}
+            ${toString (padding-horizontal + padding-inner)}${unit};
+        }
+        #workspaces button {
+          padding:
+            ${toString padding-vertical}${unit}
+            2px
+            ${toString padding-vertical}${unit}
+            ${toString padding-inner}${unit};
+        }
+        #workspaces button.focused { background-color: #424242; }
+
+        #clock {
+          padding:
+            ${toString padding-vertical}${unit}
+            ${toString (padding-horizontal + padding-inner)}${unit}
+            ${toString padding-vertical}${unit}
+            ${toString (padding-horizontal + padding-inner)}${unit};
+        }
+
+        #tray {
+          padding:
+            ${toString padding-vertical}${unit}
+            ${toString padding-inner}${unit}
+            ${toString padding-vertical}${unit}
+            ${toString padding-inner}${unit};
+        }
+        #pulseaudio {
+          border-radius: 0px 0px 0px 0px;
+          padding:
+            ${toString padding-vertical}${unit}
+            ${toString padding-inner}${unit}
+            ${toString padding-vertical}${unit}
+            ${toString padding-inner}${unit};
+        }
+        #network {
+          border-radius:
+            0px
+            ${toString border-radius}${unit}
+            ${toString border-radius}${unit}
+            0px;
+          padding:
+            ${toString padding-vertical}${unit}
+            ${toString (padding-horizontal + padding-inner)}${unit}
+            ${toString padding-vertical}${unit}
+            ${toString padding-inner}${unit};
+        }
+        #pulseaudio, #network {
+          background-color: black;
+        }
+      '';
     };
   };
 }

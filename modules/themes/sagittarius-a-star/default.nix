@@ -45,7 +45,7 @@ in {
     };
 
     # gtk theming
-    # programs.dconf.enable = true;
+    programs.dconf.enable = true; # Fixes: error: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name ca.desrt.dconf was not provided by any .service files
     home.dconf = {
       enable = true;
       settings = {

@@ -86,5 +86,14 @@ in {
     };
 
     nixpkgs.config.allowUnfree = true;
+
+    ### extras
+
+    myServices = {
+      easyeffects.enable = true;
+    };
+    home.sway.startup = [
+      { command = "exec ${pkgs.easyeffects}/bin/easyeffects"; }
+    ];
   };
 }

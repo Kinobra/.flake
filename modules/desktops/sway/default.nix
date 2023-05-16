@@ -119,7 +119,6 @@ in
             '';
         in [
           { command = "exec ${pkgs.autotiling-rs}/bin/autotiling-rs"; }
-          { command = "exec ${pkgs.easyeffects}/bin/easyeffects"; }
           { command = "exec ${background-init}"; }
         ];
 

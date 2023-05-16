@@ -23,7 +23,6 @@ in {
     };
 
     myServices = {
-      easyeffects.enable = true;
       # nebula.enable = true;
       virtualisation.enable = true;
     };

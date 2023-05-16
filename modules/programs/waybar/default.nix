@@ -100,7 +100,7 @@ in {
           position = "top";
 
           modules-left = [ "custom/menu" "sway/workspaces" "sway/window" "sway/mode" ];
-          modules-center = [ "clock" "custom/notification" ];
+          modules-center = [ "clock" ];
           modules-right = [
             (optionalString (builtins.elem config.networking.hostName ["nixos" "minerva"]) "custom/cpu")
             (optionalString (builtins.elem config.networking.hostName ["nixos"]) "custom/gpu")

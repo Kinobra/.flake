@@ -1,0 +1,94 @@
+* {
+	color: #dddddd;
+	font-family: "Fira Code Semibold";
+	font-size: 16px;
+
+	border: none;
+	border-radius: 6px;
+
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+}
+
+/* The whole bar */
+#waybar {
+	background: transparent;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+	margin: 6px 6px 0px 6px;
+	background-color: #121212;
+	/* padding: 2px 2px 2px 2px; */
+}
+.modules-left {
+	padding-right: 4px;
+}
+.modules-right {
+	padding-left: 4px;
+}
+
+/* Each module */
+/* #workspaces button, */
+/* #workspaces, */
+#mode,
+#custom-cpu,
+#custom-gpu,
+#battery
+/* #tray, */
+{
+	padding: 0px 4px 0px 4px;
+}
+
+#custom-menu {
+	padding: 0px 8px 0px 8px;
+}
+#workspaces button {
+	padding: 0px 2px 0px 4px;
+}
+/* #window { */
+/* 	padding: 0px 0px 0px 0px; */
+/* } */
+
+#clock {
+	padding: 0px 8px 0px 8px;
+}
+
+#tray {
+	padding: 0px 6px 0px 4px;
+}
+#pulseaudio {
+	padding: 0px 4px 0px 6px;
+}
+#network {
+	padding: 0px 8px 0px 4px;
+}
+
+/*custom/menu*/
+#custom-menu {
+	background-color: black;
+	border-radius: 6px 0px 0px 6px;
+}
+
+#workspaces button.focused {
+	background-color: #424242;
+}
+
+/* sway/mode */
+/* #window { */
+/* 	padding-left: 0; */
+/* } */
+
+#pulseaudio, #network {
+	color: #dedede;
+	background-color: black;
+	/* margin: 0px; */
+}
+#pulseaudio {
+	border-radius: 0px 0px 0px 0px;
+}
+#network {
+	border-radius: 0px 6px 6px 0px;
+	/* margin-right: 2px; */
+}

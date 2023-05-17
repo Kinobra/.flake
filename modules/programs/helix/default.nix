@@ -61,18 +61,18 @@ in {
 
         keys = {
           normal = {
-            space.f.b = ":sh ${pkgs.kitty}/bin/kitty --class floating ${pkgs.lf}/bin/lf";
+            space.f.b = ":sh ${pkgs.kitty}/bin/kitty --class=floating ${pkgs.lf}/bin/lf";
             space.f.f = "file_picker";
             space.f.s = ":w";
             space.f."!" = ":w!";
-            space.g = {
-              g = ":sh ${pkgs.kitty}/bin/kitty --class floating ${pkgs.gitui}/bin/gitui";
-              f = ":sh ${pkgs.kitty}/bin/kitty --class floating ${pkgs.git}/bin/git fetch";
-              s = ":sh ${pkgs.kitty}/bin/kitty --class floating ${pkgs.git}/bin/git status";
-              l = ":sh ${pkgs.kitty}/bin/kitty --class floating ${pkgs.git}/bin/git log";
-              u = ":sh ${pkgs.kitty}/bin/kitty --class floating ${pkgs.git}/bin/git push";
-              d = ":sh ${pkgs.kitty}/bin/kitty --class floating ${pkgs.git}/bin/git pull";
-              c = ":sh ${pkgs.kitty}/bin/kitty --class floating ${pkgs.git}/bin/git commit";
+            space.v = {
+              g = ":sh ${pkgs.kitty}/bin/kitty --class=floating ${pkgs.gitui}/bin/gitui";
+              f = ":sh ${pkgs.kitty}/bin/kitty --class=floating ${pkgs.git}/bin/git fetch";
+              s = ":sh ${pkgs.kitty}/bin/kitty --class=floating ${pkgs.git}/bin/git status";
+              l = ":sh ${pkgs.kitty}/bin/kitty --class=floating ${pkgs.git}/bin/git log";
+              u = ":sh ${pkgs.kitty}/bin/kitty --class=floating ${pkgs.git}/bin/git push";
+              d = ":sh ${pkgs.kitty}/bin/kitty --class=floating ${pkgs.git}/bin/git pull";
+              c = ":sh ${pkgs.kitty}/bin/kitty --class=floating ${pkgs.git}/bin/git commit";
             };
             space.q = ":q";
           };

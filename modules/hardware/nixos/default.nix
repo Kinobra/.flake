@@ -1,4 +1,4 @@
-{ options, config, lib, pkgs, modulesPath, ... }:
+{ config, lib, pkgs, ... }:
 
 with lib;
 let cfg = config.myHardware.nixos;

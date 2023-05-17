@@ -1,4 +1,4 @@
-{ options, config, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 with lib;
 let cfg = config.myDesktops.sway;
@@ -86,13 +86,13 @@ in
         window = {
           border = borders;
           commands = [
-            { criteria = { app_id = "^launcher$"; }; command = "floating enable, sticky enable, resize set 30 ppt 60 ppt"; }
-            { criteria = { app_id = "^floating$"; }; command = "floating enable, sticky enable, resize set 86 ptt 86 ppt"; }
-            { criteria = { app_id = "org.keepassxc.KeePassXC"; }; command = "floating enable"; }
-            { criteria = { app_id = "com.github.wwmm.easyeffects"; }; command = "move scratchpad"; }
-            { criteria = { class = "Anki"; }; command = "floating enable"; }
-            { criteria = { app_id = "mpv"; }; command = "floating enable"; }
-            { criteria = { app_id = "imv"; }; command = "floating enable"; }
+            { criteria.app_id = "^launcher$";  command = "floating enable, sticky enable, move position center, resize set 30 ppt 60 ppt"; }
+            { criteria.app_id = "^floating$";  command = "floating enable, move position center, resize set 86 ptt 86 ppt"; }
+            { criteria.app_id = "org.keepassxc.KeePassXC";  command = "floating enable"; }
+            { criteria.app_id = "com.github.wwmm.easyeffects";  command = "move scratchpad"; }
+            { criteria.class = "Anki";  command = "floating enable"; }
+            { criteria.app_id = "mpv";  command = "floating enable"; }
+            { criteria.app_id = "imv";  command = "floating enable"; }
           ];
         };
         floating = { border = borders; };

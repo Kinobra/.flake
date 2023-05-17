@@ -10,6 +10,7 @@
     ./gaming
     ./git
     ./gpg
+    ./helix
     ./helvum
     ./imv
     ./keepassxc

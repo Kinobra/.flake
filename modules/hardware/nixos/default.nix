@@ -92,7 +92,7 @@ in {
     myServices = {
       easyeffects.enable = true;
     };
-    home.sway.startup = [
+    home.sway.config.startup = [
       { command = "exec ${pkgs.easyeffects}/bin/easyeffects"; }
     ];
   };

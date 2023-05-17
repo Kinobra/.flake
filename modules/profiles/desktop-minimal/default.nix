@@ -19,11 +19,11 @@ in {
     system.autoUpgrade = {
       enable = true;
       flake = "git+file:/home/${config.user.name}/.flake";
-      flags = [
-        "--update-input" "nixpkgs"
-        "--update-input" "home-manager"
-        "--commit-lock-file"
-      ];
+      # flags = [
+      #   "--update-input" "nixpkgs"
+      #   "--update-input" "home-manager"
+      #   "--commit-lock-file"
+      # ];
     };
 
     myPrograms = {
@@ -31,6 +31,7 @@ in {
       firefox.enable = true;
       git.enable = true;
       gpg.enable = true;
+      helix.enable = true;
       imv.enable = true;
       keepassxc.enable = true;
       kitty.enable = true;

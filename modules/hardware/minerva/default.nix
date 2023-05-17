@@ -1,4 +1,4 @@
-{ options, config, lib, pkgs, modulesPath, ... }:
+{ config, lib, pkgs, ... }:
 
 with lib;
 let cfg = config.myHardware.minerva;
@@ -55,7 +55,7 @@ in {
 
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
-    powerManagement.cpuFreqGovernor = lib.mkDefault "powersave"; #powersave #ondemand #performance
+    powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand"; #powersave #ondemand #performance
     hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
     ## configuration.nix

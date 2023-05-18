@@ -1,8 +1,43 @@
 { config, lib, pkgs, ... }:
 
 with lib;
-let cfg = config.myPrograms.helix;
+let
+  cfg = config.myPrograms.helix;
 
+  term = "${pkgs.kitty}/bin/kitty --class=floating";
+
+  file_browser = pkgs.writeScript "file-browser"
+    "${term} ${pkgs.lf}/bin/lf";
+
+  gitui = pkgs.writeScript "gitui"
+    "${term} ${pkgs.gitui}/bin/gitui";
+
+  git = "${pkgs.git}/bin/git";
+
+  git-fetch = pkgs.writeScript "git-fetch"
+    "${term} ${git} fetch";
+
+  git-status = let
+    git-status-wait = pkgs.writeScript "git-status-wait"
+      ''
+        ${git} status
+        echo "Press Enter to exit..."
+        read
+      '';
+  in pkgs.writeScript "git-status"
+    "${term} ${git-status-wait}";
+
+  git-log = pkgs.writeScript "git-log"
+    "${term} ${git} log";
+
+  git-push = pkgs.writeScript "git-push"
+    "${term} ${git} push";
+
+  git-pull = pkgs.writeScript "git-pull"
+    "${term} ${git} pull";
+
+  git-commit = pkgs.writeScript "git-commit"
+    "${term} ${git} commit";
 in {
   options.myPrograms.helix = {
     enable = mkOption {
@@ -61,18 +96,19 @@ in {
 
         keys = {
           normal = {
-            space.f.b = ":sh ${pkgs.kitty}/bin/kitty --class=floating ${pkgs.lf}/bin/lf";
+            space.f.b = ":sh ${file_browser}";
             space.f.f = "file_picker";
             space.f.s = ":w";
             space.f."!" = ":w!";
+            space.t = ":sh ${term}";
             space.v = {
-              g = ":sh ${pkgs.kitty}/bin/kitty --class=floating ${pkgs.gitui}/bin/gitui";
-              f = ":sh ${pkgs.kitty}/bin/kitty --class=floating ${pkgs.git}/bin/git fetch";
-              s = ":sh ${pkgs.kitty}/bin/kitty --class=floating ${pkgs.git}/bin/git status";
-              l = ":sh ${pkgs.kitty}/bin/kitty --class=floating ${pkgs.git}/bin/git log";
-              u = ":sh ${pkgs.kitty}/bin/kitty --class=floating ${pkgs.git}/bin/git push";
-              d = ":sh ${pkgs.kitty}/bin/kitty --class=floating ${pkgs.git}/bin/git pull";
-              c = ":sh ${pkgs.kitty}/bin/kitty --class=floating ${pkgs.git}/bin/git commit";
+              g = ":sh ${gitui}";
+              f = ":sh ${git-fetch}";
+              s = ":sh ${git-status}";
+              l = ":sh ${git-log}";
+              u = ":sh ${git-push}";
+              d = ":sh ${git-pull}";
+              c = ":sh ${git-commit}";
             };
             space.q = ":q";
           };

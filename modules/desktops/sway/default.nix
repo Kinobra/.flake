@@ -138,8 +138,8 @@ in
           "${modifier}+d" = "exec ${menu}";
           "${modifier}+Shift+c" = "reload";
           # Applications
-          "${modifier}+i" = "exec ${terminal} --class=nvim ${pkgs.neovim}/bin/nvim";
-          "${modifier}+c" = "exec ${terminal} --class=nvim ${pkgs.neovim}/bin/nvim -c 'cd ~/.flake'";
+          "${modifier}+i" = "exec ${terminal} --class=editor $EDITOR";
+          "${modifier}+c" = "exec ${terminal} --class=config --working-directory ~/.flake $EDITOR";
           "${modifier}+g" = "exec ${terminal} --class=bottom ${pkgs.bottom}/bin/btm";
           "${modifier}+u" = "exec ${pkgs.firefox}/bin/firefox";
           "${modifier}+Shift+e" = "mode '${mode_power}'";

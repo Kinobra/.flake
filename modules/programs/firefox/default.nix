@@ -12,9 +12,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.sessionVariables = {
-      BROWSER="firefox";
-    };
     home.programs.firefox = {
       enable = true;
       profiles.default = {
@@ -152,5 +149,12 @@ in {
         bookmarks = [ ];
       };
     };
+
+    home.sessionVariables = {
+      BROWSER="firefox";
+    };    
+    home.programs.nushell.extraEnv = mkIf config.myPrograms.nushell.enable ''
+      let-env BROWSER = firefox
+    '';
   };
 }

@@ -138,10 +138,10 @@ in
           "${modifier}+d" = "exec ${menu}";
           "${modifier}+Shift+c" = "reload";
           # Applications
-          "${modifier}+i" = "exec ${terminal} --class=editor $EDITOR";
-          "${modifier}+c" = "exec ${terminal} --class=config --working-directory ~/.flake $EDITOR";
+          "${modifier}+i" = "exec ${terminal} --class=editor ${config.home.sessionVariables.EDITOR}";
+          "${modifier}+c" = "exec ${terminal} --class=config --working-directory ~/.flake ${config.home.sessionVariables.EDITOR}";
           "${modifier}+g" = "exec ${terminal} --class=bottom ${pkgs.bottom}/bin/btm";
-          "${modifier}+u" = "exec ${pkgs.firefox}/bin/firefox";
+          "${modifier}+u" = "exec ${config.home.sessionVariables.BROWSER}";
           "${modifier}+Shift+e" = "mode '${mode_power}'";
           "${modifier}+p" = "exec ${grim} -g \"$(${slurp})\" - | ${wl-copy}";
           "${modifier}+Shift+p" = "exec ${grim} -o $(swaymsg -t get_outputs | ${jq} -r '.[] | select(.focused) | .name') - | ${wl-copy}";

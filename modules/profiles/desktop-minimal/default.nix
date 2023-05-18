@@ -37,7 +37,6 @@ in {
       kitty.enable = true;
       lf.enable = true;
       mpv.enable = true;
-      neovim.enable = true;
       nushell.enable = true;
       signal.enable = true;
       yt-dlp.enable = true;

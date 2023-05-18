@@ -82,5 +82,12 @@ in {
         };
       };
     };
+
+    home.sessionVariables = {
+      EDITOR="hx";
+    };    
+    home.programs.nushell.extraEnv = mkIf config.myPrograms.nushell.enable ''
+      let-env EDITOR = hx
+    '';
   };
 }

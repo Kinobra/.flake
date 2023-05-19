@@ -55,7 +55,9 @@ in {
           # behaviour
           scrolloff = 8;
           line-number = "relative";
-          cursorline = false;
+          cursorline = true;
+          auto-save = true;
+          mouse = false;
 
           # instant autocompletion
           idle-timeout = 0;
@@ -68,6 +70,11 @@ in {
 
           lsp = {
             display-inlay-hints = true;
+          };
+
+          cursor-shape = {
+            insert = "bar";
+            select = "underline";
           };
 
           file-picker = {
@@ -96,21 +103,23 @@ in {
 
         keys = {
           normal = {
-            space.f.b = ":sh ${file_browser}";
-            space.f.f = "file_picker";
-            space.f.s = ":w";
-            space.f."!" = ":w!";
-            space.t = ":sh ${term}";
-            space.v = {
-              g = ":sh ${gitui}";
-              f = ":sh ${git-fetch}";
-              s = ":sh ${git-status}";
-              l = ":sh ${git-log}";
-              u = ":sh ${git-push}";
-              d = ":sh ${git-pull}";
-              c = ":sh ${git-commit}";
+            space = {
+              q = ":q";
+              t = ":sh ${term}";
+              v = {
+                g = ":sh ${gitui}";
+                f = ":sh ${git-fetch}";
+                s = ":sh ${git-status}";
+                l = ":sh ${git-log}";
+                u = ":sh ${git-push}";
+                d = ":sh ${git-pull}";
+                c = ":sh ${git-commit}";
+              };
+              w = ":w";
+              W = ":w!";
+              "." = ":sh ${file_browser}";
             };
-            space.q = ":q";
+            X = "extend_line_above";
           };
           insert = {
             j.k = "normal_mode";
@@ -120,8 +129,8 @@ in {
     };
 
     home.sessionVariables = {
-      EDITOR="hx";
-    };    
+      EDITOR = "hx";
+    };
     home.programs.nushell.extraEnv = mkIf config.myPrograms.nushell.enable ''
       let-env EDITOR = hx
     '';

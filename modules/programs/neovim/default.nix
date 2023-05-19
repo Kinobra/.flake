@@ -95,6 +95,9 @@ in {
     home.sessionVariables = {
       EDITOR="nvim";
     };
+    home.programs.nushell.extraEnv = mkIf config.myPrograms.nushell.enable ''
+      let-env EDITOR = nvim
+    '';
 
     home.configFile."nvim/lua".source = ./lua;
   };

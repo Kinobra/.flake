@@ -73,7 +73,7 @@ in
           launcher = "${pkgs.sway-launcher-desktop}/bin/sway-launcher-desktop";
         in "${terminal} --class=launcher ${launcher}";
 
-        bars = [{ command = "${pkgs.waybar}/bin/waybar"; }];
+        bars = [{ command = "${config.home.sessionVariables.BAR}"; }];
 
         fonts = {
           names = [ "Fira Code" ];

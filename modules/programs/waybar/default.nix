@@ -233,5 +233,12 @@ in {
         }
       '';
     };
+
+    home.sessionVariables = {
+      BAR="waybar";
+    };    
+    home.programs.nushell.extraEnv = mkIf config.myPrograms.nushell.enable ''
+      let-env BAR = waybar
+    '';
   };
 }

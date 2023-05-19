@@ -1,4 +1,4 @@
-{ options, config, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 with lib;
 let cfg = config.myPrograms.kitty;
@@ -50,5 +50,12 @@ in {
         color15 = "#ffffff"; # white (bright)
       };
     };
+
+    home.sessionVariables = {
+      TERM="kitty";
+    };
+    home.programs.nushell.extraEnv = mkIf config.myPrograms.nushell.enable ''
+      let-env TERM = kitty
+    '';
   };
 }

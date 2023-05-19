@@ -46,5 +46,12 @@ in {
         "type": "stdio"
       }
       '';
+
+    home.sessionVariables = {
+      BROWSER="librewolf";
+    };
+    home.programs.nushell.extraEnv = mkIf config.myPrograms.nushell.enable ''
+      let-env BROWSER = librewolf
+    '';
   };
 }

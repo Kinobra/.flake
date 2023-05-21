@@ -29,15 +29,14 @@ in
       wl-clipboard 		# wl-copy and wl-paste for copy/paste from stdin / stdout
     ];
 
-    environment.systemPackages = with pkgs; [
-      swayfx
-    ];
-
     services.greetd = {
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd 'sway'";
+          command = let
+            swayfx = pkgs.writeScript "swayfx"
+              "${pkgs.swayfx}/bin/sway";
+          in "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd '${swayfx}'";
           user = "greeter";
         };
       };
@@ -53,7 +52,7 @@ in
       ];
     };
 
-    home.configFile."sway/bg.png".source = ./bg.png;
+    home.configFile."sway/wallpaper.png".source = ./wallpaper.png;
 
     home.sway = {
       enable = true;

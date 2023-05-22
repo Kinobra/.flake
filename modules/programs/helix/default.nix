@@ -50,7 +50,7 @@ in {
     home.programs.helix = {
       enable = true;
       settings = {
-        theme = "base16_transparent";
+        theme = "ayu_evolve";
         editor = {
           # behaviour
           scrolloff = 8;

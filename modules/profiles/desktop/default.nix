@@ -17,7 +17,6 @@ in {
     myPrograms = {
       bottles.enable = true;
       brave.enable = true;
-      discord.enable = true;
       gaming.enable = true;
       helvum.enable = true;
     };

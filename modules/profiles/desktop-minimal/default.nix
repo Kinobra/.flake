@@ -27,6 +27,7 @@ in {
     };
 
     myPrograms = {
+      discord.enable = true;
       direnv.enable = true;
       firefox.enable = true;
       git.enable = true;
@@ -36,6 +37,7 @@ in {
       keepassxc.enable = true;
       kitty.enable = true;
       lf.enable = true;
+      ncmpc.enable = true;
       mpv.enable = true;
       nushell.enable = true;
       signal.enable = true;
@@ -44,7 +46,6 @@ in {
     };
 
     myServices = {
-      mpd.enable = true;
       nix.enable = true;
       syncthing.enable = true;
     };

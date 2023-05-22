@@ -19,6 +19,7 @@
     ./librewolf
     ./monero-gui
     ./mpv
+    ./ncmpc
     ./neovim
     ./nushell
     ./signal

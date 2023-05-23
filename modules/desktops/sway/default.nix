@@ -139,7 +139,7 @@ in
           # Applications
           "${modifier}+i" = "exec ${terminal} --class=editor -e ${config.home.sessionVariables.EDITOR}";
           "${modifier}+c" = "exec ${terminal} --class=config --working-directory ~/.flake -e ${config.home.sessionVariables.EDITOR}";
-          "${modifier}+g" = "exec ${terminal} --class=bottom ${pkgs.bottom}/bin/btm";
+          "${modifier}+g" = "exec ${terminal} --class=bottom -e ${pkgs.bottom}/bin/btm";
           "${modifier}+u" = "exec ${config.home.sessionVariables.BROWSER}";
           "${modifier}+Shift+e" = "mode '${mode_power}'";
           "${modifier}+p" = "exec ${grim} -g \"$(${slurp})\" - | ${wl-copy}";

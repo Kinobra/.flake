@@ -8,30 +8,31 @@
     name = "default";
     type = "dark";
     opacity = 1;
+    # c.f. base16 - default.dark by Chris Kempson
     colors = {
       primary = {
-        foreground = "#f8f8f8";
-        background = "#000000";
+        foreground = "#d0d0d0";
+        background = "#151515";
       };
       normal = {
-        black   = "#241f31";
-        red     = "#a51d2d";
-        green   = "#26a269";
-        yellow  = "#e66100";
-        blue    = "#1a5fb4";
-        magenta = "#613583";
-        cyan    = "#e5a50a";
-        white   = "#9a9996";
+        black   = "#151515";
+        red     = "#ac4142";
+        green   = "#90a959";
+        yellow  = "#f4bf75";
+        blue    = "#6a9fb5";
+        magenta = "#aa759f";
+        cyan    = "#75b5aa";
+        white   = "#d0d0d0";
       };
       bright = {
-        black   = "#5e5c64";
-        red     = "#ed333b";
-        green   = "#57e389";
-        yellow  = "#ff7800";
-        blue    = "#3584e4";
-        magenta = "#c061cb";
-        cyan    = "#f6d32d";
-        white   = "#ffffff";
+        black   = "#505050";
+        red     = "#ac4142";
+        green   = "#90a959";
+        yellow  = "#f4bf75";
+        blue    = "#6a9fb5";
+        magenta = "#aa759f";
+        cyan    = "#75b5aa";
+        white   = "#f5f5f5";
       };
     };
   };

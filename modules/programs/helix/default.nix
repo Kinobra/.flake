@@ -50,7 +50,7 @@ in {
     home.programs.helix = {
       enable = true;
       settings = {
-        theme = "ayu_evolve";
+        theme = "${config.theme.name}";
         editor = {
           # behaviour
           scrolloff = 8;
@@ -124,6 +124,11 @@ in {
           insert = {
             j.k = "normal_mode";
           };
+        };
+      };
+      themes = {
+        "${config.theme.name}" = {
+          inherits = "base16_transparent";
         };
       };
     };

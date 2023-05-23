@@ -1,9 +1,9 @@
-{ config, options, lib, home-manager, pkgs, ... }:
+{ config, options, lib, pkgs, ... }:
 
 with lib;
 
 {
-  options = with types; {
+  options = {
     user = lib.mkOption { };
 
     home = {
@@ -20,6 +20,8 @@ with lib;
       configFile = lib.mkOption { description = "Files to place in $XDG_CONFIG_HOME"; };
       dataFile = lib.mkOption { description = "Files to place in $XDG_DATA_HOME"; };
     };
+
+    theme = lib.mkOption { };
   };
 
   config = {

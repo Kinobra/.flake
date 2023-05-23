@@ -60,7 +60,7 @@ in
       wrapperFeatures.gtk = true;
       config = let
         gaps = 6;
-        borders = 1;
+        borders = 0;
         mode_power = "| power [ e | l | h | s | r ]"; # exit | lockout | hibernate | shutdown | restart
       in {
         modifier = "Mod4";
@@ -168,15 +168,26 @@ in
       };
 
       extraConfig = ''
+        # corners
         corner_radius 6
         smart_corner_radius enable
+
+        # shadows
         shadows enable
         shadows_on_csd enable
-        default_dim_inactive 0.14
-      '';
 
-      # set $background_video ~/.config/sway/bg.mp4
-      # set $mpvpaper_params --auto-pause --mpv-options "no-audio --loop-file"
+        # blur
+        blur enable
+        blur_xray disable
+        blur_passes 3
+        blur_radius 2
+
+        # dimming
+        default_dim_inactive 0.14
+
+        # scratchpad
+        scratchpad_minimize enable
+      '';
     };
   };
 }

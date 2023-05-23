@@ -19,7 +19,7 @@
   };
 
   # Output config, or config for NixOS system
-  outputs = { self, nixpkgs, home-manager, nx-fetch, nx-gen, nx-pkgs, ... }@inputs: {
+  outputs = { nixpkgs, home-manager, nx-fetch, nx-gen, nx-pkgs, ... }: {
     # Define a devshell for working with the flake
     devShells = let
       system = "x86_64-linux";
@@ -73,7 +73,7 @@
           myDesktops.sway.enable = true;
           myProfiles.desktop-minimal.enable = true;
           myHardware.minerva.enable = true;
-          myThemes.sagittarius-a-star.enable = true;
+          myThemes.abyss.enable = true;
 
           environment.systemPackages = [
             nx-fetch.packages."x86_64-linux".default
@@ -95,7 +95,7 @@
           myDesktops.sway.enable = true;
           myProfiles.desktop.enable = true;
           myHardware.nixos.enable = true;
-          myThemes.sagittarius-a-star.enable = true;
+          myThemes.abyss.enable = true;
 
           environment.systemPackages = [
             nx-fetch.packages."x86_64-linux".default

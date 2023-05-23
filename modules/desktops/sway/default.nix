@@ -65,12 +65,12 @@ in
       in {
         modifier = "Mod4";
 
-        terminal = "${pkgs.kitty}/bin/kitty";
+        terminal = "${config.home.sessionVariables.TERM}";
 
         menu = let
           terminal = config.home.sway.config.terminal;
           launcher = "${pkgs.sway-launcher-desktop}/bin/sway-launcher-desktop";
-        in "${terminal} --class=launcher ${launcher}";
+        in "${terminal} --class=launcher -e ${launcher}";
 
         bars = [{ command = "${config.home.sessionVariables.BAR}"; }];
 
@@ -137,8 +137,8 @@ in
           "${modifier}+d" = "exec ${menu}";
           "${modifier}+Shift+c" = "reload";
           # Applications
-          "${modifier}+i" = "exec ${terminal} --class=editor ${config.home.sessionVariables.EDITOR}";
-          "${modifier}+c" = "exec ${terminal} --class=config --working-directory ~/.flake ${config.home.sessionVariables.EDITOR}";
+          "${modifier}+i" = "exec ${terminal} --class=editor -e ${config.home.sessionVariables.EDITOR}";
+          "${modifier}+c" = "exec ${terminal} --class=config --working-directory ~/.flake -e ${config.home.sessionVariables.EDITOR}";
           "${modifier}+g" = "exec ${terminal} --class=bottom ${pkgs.bottom}/bin/btm";
           "${modifier}+u" = "exec ${config.home.sessionVariables.BROWSER}";
           "${modifier}+Shift+e" = "mode '${mode_power}'";

@@ -4,18 +4,18 @@ with lib;
 let
   cfg = config.myPrograms.helix;
 
-  term = "${pkgs.kitty}/bin/kitty --class=floating";
+  term = "${config.home.sessionVariables.TERM} --class=floating";
 
   file_browser = pkgs.writeScript "file-browser"
-    "${term} ${pkgs.lf}/bin/lf";
+    "${term} -e ${pkgs.lf}/bin/lf";
 
   gitui = pkgs.writeScript "gitui"
-    "${term} ${pkgs.gitui}/bin/gitui";
+    "${term} -e ${pkgs.gitui}/bin/gitui";
 
   git = "${pkgs.git}/bin/git";
 
   git-fetch = pkgs.writeScript "git-fetch"
-    "${term} ${git} fetch";
+    "${term} -e ${git} fetch";
 
   git-status = let
     git-status-wait = pkgs.writeScript "git-status-wait"
@@ -25,19 +25,19 @@ let
         read
       '';
   in pkgs.writeScript "git-status"
-    "${term} ${git-status-wait}";
+    "${term} -e ${git-status-wait}";
 
   git-log = pkgs.writeScript "git-log"
-    "${term} ${git} log";
+    "${term} -e ${git} log";
 
   git-push = pkgs.writeScript "git-push"
-    "${term} ${git} push";
+    "${term} -e ${git} push";
 
   git-pull = pkgs.writeScript "git-pull"
-    "${term} ${git} pull";
+    "${term} -e ${git} pull";
 
   git-commit = pkgs.writeScript "git-commit"
-    "${term} ${git} commit";
+    "${term} -e ${git} commit";
 in {
   options.myPrograms.helix = {
     enable = mkOption {

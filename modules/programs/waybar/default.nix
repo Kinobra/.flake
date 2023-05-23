@@ -83,13 +83,13 @@ in {
               interval = 1;
               format = "<span color=\"gray\">CPU</span> {}";
               exec = "waybar-custom-cpu";
-              on-click = "swaymsg exec \"kitty --class=floating btm\"";
+              on-click = "swaymsg exec \"${config.home.sessionVariables.TERM} --class=floating -e btm\"";
           };
           "custom/gpu" = {
               interval = 1;
               format = "<span color=\"gray\">GPU</span> {}";
               exec = "waybar-custom-gpu";
-              on-click = "swaymsg exec \"kitty --class=floating nvtop\"";
+              on-click = "swaymsg exec \"${config.home.sessionVariables.TERM} --class=floating -e nvtop\"";
           };
           "battery" = {
             format = "<span color=\"gray\">BAT</span> {capacity}%";
@@ -106,7 +106,7 @@ in {
               format = "<span color=\"gray\">VOL</span> {volume}%";
               format-muted = "<span strikethrough=\"true\" color=\"gray\">VOL</span>";
               tooltip-format = "VOL {volume}%";
-              on-click = "swaymsg exec \"kitty --class=floating pulsemixer\"";
+              on-click = "swaymsg exec \"${config.home.sessionVariables.TERM} --class=floating -e pulsemixer\"";
           };
           "network" = {
               interval = 5;
@@ -114,7 +114,7 @@ in {
               format-ethernet = "<span color=\"gray\">ETH</span>";
               format-disconnected = "<span strikethrough=\"true\" color=\"gray\">ETH</span>";
               tooltip-format = "{ifname} ({essid}): {ipaddr}";
-              on-click = "swaymsg exec \"kitty --class=floating nmtui\"";
+              on-click = "swaymsg exec \"${config.home.sessionVariables.TERM} --class=floating -e nmtui\"";
           };
         };
       };

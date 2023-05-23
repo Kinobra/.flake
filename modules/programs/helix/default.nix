@@ -105,6 +105,7 @@ in {
           normal = {
             space = {
               q = ":q";
+              Q = ":q!";
               t = ":sh ${term}";
               v = {
                 g = ":sh ${gitui}";

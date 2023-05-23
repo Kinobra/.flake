@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 {
   imports = [
+    ./alacritty
     ./bottles
     ./brave
     ./cryptomator

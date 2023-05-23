@@ -35,7 +35,10 @@ in {
       helix.enable = true;
       imv.enable = true;
       keepassxc.enable = true;
-      kitty.enable = true;
+
+      # kitty.enable = true;
+      alacritty.enable = true;
+
       lf.enable = true;
       ncmpc.enable = true;
       mpv.enable = true;

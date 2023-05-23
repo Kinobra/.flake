@@ -88,8 +88,12 @@ in {
         alias gs = git status
         alias gc = git commit
         alias gl = git log
-        alias gd = git pull
-        alias gu = git push
+        alias gd = git diff
+        alias gb = git branch
+        alias go = git checkout
+        alias ga = git add
+        alias g< = git pull
+        alias g> = git push
         alias gui = gitui
 
         # cat -> bat

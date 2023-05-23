@@ -130,6 +130,24 @@ in {
       themes = {
         "${config.theme.name}" = {
           inherits = "base16_transparent";
+          palette = {
+            black         = "${config.theme.colors.primary.background}";
+            white         = "${config.theme.colors.primary.foreground}";
+            red           = "${config.theme.colors.normal.red}";
+            green         = "${config.theme.colors.normal.green}";
+            yellow        = "${config.theme.colors.normal.yellow}";
+            blue          = "${config.theme.colors.normal.blue}";
+            magenta       = "${config.theme.colors.normal.magenta}";
+            cyan          = "${config.theme.colors.normal.cyan}";
+            grey          = "${config.theme.colors.normal.black}";
+            light-red     = "${config.theme.colors.bright.red}";
+            light-green   = "${config.theme.colors.bright.green}";
+            light-yellow  = "${config.theme.colors.bright.yellow}";
+            light-blue    = "${config.theme.colors.bright.blue}";
+            light-magenta = "${config.theme.colors.bright.magenta}";
+            light-cyan    = "${config.theme.colors.bright.cyan}";
+            light-grey    = "${config.theme.colors.bright.black}";
+          };
         };
       };
     };

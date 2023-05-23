@@ -17,8 +17,6 @@ in {
       settings = {
         window = {
           decorations = "none";
-          # opacity = 0.86;
-          # opacity = 0.38;
           opacity = config.theme.opacity;
         };
         font = {

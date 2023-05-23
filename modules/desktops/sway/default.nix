@@ -168,6 +168,8 @@ in
       };
 
       extraConfig = ''
+        ## swayfx specific options
+
         # corners
         corner_radius 6
         smart_corner_radius enable

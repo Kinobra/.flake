@@ -35,6 +35,19 @@ in {
         };
       };
     };
+    home.programs.nushell.extraEnv = mkIf config.myPrograms.nushell.enable ''
+      alias gs = git status
+      alias gc = git commit
+      alias gl = git log
+      alias gd = git diff
+      alias gb = git branch
+      alias go = git checkout
+      alias ga = git add
+      alias g< = git pull
+      alias g> = git push
+      alias gui = gitui
+    '';
+
     home.programs.gitui = {
       enable = true;
       keyConfig = ''

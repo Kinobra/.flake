@@ -56,9 +56,9 @@ in {
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
     hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-    ## configuration.nix
 
     system.stateVersion = "22.11";
+    ## configuration.nix
 
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
@@ -84,8 +84,6 @@ in {
       layout = "us";
       xkbVariant = "";
     };
-
-    ### extras
 
   };
 }

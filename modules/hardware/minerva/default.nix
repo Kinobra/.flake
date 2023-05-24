@@ -58,11 +58,10 @@ in {
     powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand"; #powersave #ondemand #performance
     hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-    ## configuration.nix
 
     system.stateVersion = "22.11";
+    ## configuration.nix
 
-    # Bootloader.
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
     boot.loader.efi.efiSysMountPoint = "/boot/efi";

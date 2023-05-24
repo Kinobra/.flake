@@ -79,6 +79,7 @@
 
           myPrograms = {
             light.enable = true;
+            bottles.enable = true;
           };
 
           environment.systemPackages = [

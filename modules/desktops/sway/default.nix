@@ -54,6 +54,7 @@ in
 
     home.configFile."sway/wallpaper.png".source = ./wallpaper.png;
 
+    hardware.opengl.enable = true; # required by sway, home-manager can't enable this
     home.sway = {
       enable = true;
       package = "${pkgs.swayfx}";

@@ -98,7 +98,5 @@ in {
       light
     ];
 
-    # fix as swayfx doesn't start on this host...
-    hardware.opengl.enable = true;
   };
 }

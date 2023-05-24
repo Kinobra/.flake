@@ -12,21 +12,23 @@ in {
   };
 
   config = mkIf cfg.enable {
+    security.pam.services.swaylock = {};
     home.programs.swaylock = {
       enable = true;
+      package = pkgs.swaylock-effects;
       settings = {
-        # screenshot = true;
-        # clock = true;
-        # indicator = true;
-        # effect-pixelate = "8";
-        # effect-blur = "8x8";
-        # effect-greyscale = true;
-        color = "808080";
-        font-size = 24;
-        indicator-idle-visible = false;
-        indicator-radius = 100;
-        line-color = "ffffff";
-        show-failed-attempts = true;
+        screenshot = true;
+        clock = true;
+        indicator = true;
+        effect-pixelate = "8";
+        effect-blur = "8x8";
+        effect-greyscale = true;
+        # color = "808080";
+        # font-size = 24;
+        # indicator-idle-visible = false;
+        # indicator-radius = 100;
+        # line-color = "ffffff";
+        # show-failed-attempts = true;
       };
     };
 

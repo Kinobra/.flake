@@ -12,7 +12,9 @@ in {
   };
 
   config = mkIf cfg.enable {
+
     ## hardware-configuration.nix
+
     boot.initrd.availableKernelModules = [
       "virtio_net" "virtio_pci" "virtio_mmio" "virtio_blk" "virtio_scsi" "9p" "9pnet_virtio" # module
       "ata_piix" "virtio_pci" "virtio_scsi" "xhci_pci" "sd_mod" "sr_mod" # hardware-configuration
@@ -46,6 +48,6 @@ in {
     boot.loader.grub.enable = true;
     boot.loader.grub.device = "/dev/sda";
 
-    system.stateVersion = "22.11"; # Did you read the comment?
+    system.stateVersion = "22.11";
   };
 }

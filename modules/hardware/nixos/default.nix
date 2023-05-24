@@ -15,8 +15,6 @@ in {
 
     ## hardware-configuration.nix
 
-    hardware.enableRedistributableFirmware = true;
-
     boot.kernelPackages = pkgs.linuxPackages_zen;
 
     boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
@@ -56,8 +54,8 @@ in {
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
     hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
+    hardware.enableRedistributableFirmware = true;
 
-    system.stateVersion = "22.11";
     ## configuration.nix
 
     boot.loader.systemd-boot.enable = true;
@@ -85,5 +83,6 @@ in {
       xkbVariant = "";
     };
 
+    system.stateVersion = "22.11";
   };
 }

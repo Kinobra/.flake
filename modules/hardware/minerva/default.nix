@@ -15,8 +15,6 @@ in {
 
     ## hardware-configuration.nix
 
-    hardware.enableRedistributableFirmware = true;
-
     boot.kernelPackages = pkgs.linuxPackages_zen;
 
     boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
@@ -58,8 +56,8 @@ in {
     powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand"; #powersave #ondemand #performance
     hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
+    hardware.enableRedistributableFirmware = true;
 
-    system.stateVersion = "22.11";
     ## configuration.nix
 
     boot.loader.systemd-boot.enable = true;
@@ -92,5 +90,6 @@ in {
     # microsoft-surface.ipts.enable = true;
     # microsoft-surface.surface-control.enable = true;
 
+    system.stateVersion = "22.11";
   };
 }

@@ -98,11 +98,16 @@
         (import ./modules)
         {
           nixpkgs.config.allowUnfree = true;
+
           networking.hostName = "nixos";
           myDesktops.sway.enable = true;
           myProfiles.desktop.enable = true;
           myHardware.nixos.enable = true;
           myThemes.abyss.enable = true;
+
+          myServices = {
+            easyeffects.enable = true;
+          };
 
           environment.systemPackages = [
             nx-fetch.packages."x86_64-linux".default

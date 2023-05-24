@@ -14,7 +14,9 @@ in {
   config = mkIf cfg.enable {
     home.services.easyeffects = {
       enable = true;
-      # preset = "default"; # Will likely need to launch easyeffects to initially create preset.
     };
+    home.sway.config.startup = mkIf home.sway.enable [
+      { command = "exec ${pkgs.easyeffects}/bin/easyeffects"; }
+    ];
   };
 }

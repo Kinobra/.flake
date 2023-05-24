@@ -70,11 +70,16 @@
         (import ./modules)
         {
           nixpkgs.config.allowUnfree = true;
+
           networking.hostName = "minerva";
           myDesktops.sway.enable = true;
           myProfiles.desktop-minimal.enable = true;
           myHardware.minerva.enable = true;
           myThemes.abyss.enable = true;
+
+          myPrograms = {
+            light.enable = true;
+          };
 
           environment.systemPackages = [
             nx-fetch.packages."x86_64-linux".default

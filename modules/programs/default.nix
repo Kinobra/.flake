@@ -18,6 +18,7 @@
     ./kitty
     ./lf
     ./librewolf
+    ./light
     ./monero-gui
     ./mpv
     ./ncmpc

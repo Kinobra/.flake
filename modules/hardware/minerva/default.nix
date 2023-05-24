@@ -93,9 +93,5 @@ in {
     # microsoft-surface.ipts.enable = true;
     # microsoft-surface.surface-control.enable = true;
 
-    environment.systemPackages = with pkgs; [
-      light
-    ];
-
   };
 }

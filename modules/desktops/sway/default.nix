@@ -22,7 +22,7 @@ in
     myServices = {
       mako.enable = true;
       pipewire.enable = true;
-      # swayidle.enable = true;
+      swayidle.enable = true;
     };
 
     home.packages = with pkgs; [

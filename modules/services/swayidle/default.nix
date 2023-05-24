@@ -1,4 +1,4 @@
-{ options, config, lib, pkgs, ... }:
+{ config, lib, ... }:
 
 with lib;
 let cfg = config.myServices.swayidle;
@@ -12,15 +12,13 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.services.swayidle = let
-      swaylock = "${pkgs.swaylock-effects}/bin/swaylock";
-    in {
+    home.services.swayidle = {
       enable = true;
       events = [
-        { event = "before-sleep"; command = "${swaylock}"; }
+        { event = "before-sleep"; command = "${config.home.sessionVariables.LOCKSCREEN}"; }
       ];
       timeouts = [
-        { timeout = 1800; command = "${swaylock}"; }
+        { timeout = 1800; command = "${config.home.sessionVariables.LOCKSCREEN}"; }
       ];
     };
   };

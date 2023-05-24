@@ -16,7 +16,7 @@ in
     myPrograms = {
       waybar.enable = true;
       swww.enable = true;
-      # swaylock.enable = true;
+      swaylock.enable = true;
     };
 
     myServices = {
@@ -156,7 +156,7 @@ in
 
         modes = lib.mkOptionDefault {
           "${mode_power}" = {
-            "l" = "exec ${pkgs.swaylock-effects}/bin/swaylock";
+            "l" = "exec ${config.home.sessionVariables.LOCKSCREEN}";
             "e" = "exit";
             "s" = "exec systemctl poweroff";
             "r" = "exec systemctl reboot";

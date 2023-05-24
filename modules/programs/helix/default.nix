@@ -47,6 +47,11 @@ in {
   };
 
   config = mkIf cfg.enable {
+    # add global language servers
+    home.packages = with pkgs; [
+      nil
+    ];
+
     home.programs.helix = {
       enable = true;
       settings = {

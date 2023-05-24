@@ -85,8 +85,6 @@ in {
       xkbVariant = "";
     };
 
-    nixpkgs.config.allowUnfree = true;
-
     ### extras
 
     myServices = {

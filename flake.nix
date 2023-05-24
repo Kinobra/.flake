@@ -69,6 +69,7 @@
         home-manager.nixosModules.home-manager
         (import ./modules)
         {
+          nixpkgs.config.allowUnfree = true;
           networking.hostName = "minerva";
           myDesktops.sway.enable = true;
           myProfiles.desktop-minimal.enable = true;
@@ -91,6 +92,7 @@
         home-manager.nixosModules.home-manager
         (import ./modules)
         {
+          nixpkgs.config.allowUnfree = true;
           networking.hostName = "nixos";
           myDesktops.sway.enable = true;
           myProfiles.desktop.enable = true;

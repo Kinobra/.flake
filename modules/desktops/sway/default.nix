@@ -96,7 +96,11 @@ in
         };
         floating = { border = borders; };
 
-        input."*" = { accel_profile = "flat"; };
+        input."*" = {
+          accel_profile = "flat";
+          dwt = "enable"; # disable while typing
+          tap = "enable";
+        };
 
         seat."*" = let
           cursor = {

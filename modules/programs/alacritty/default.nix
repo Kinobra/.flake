@@ -1,7 +1,12 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 with lib;
-let cfg = config.myPrograms.alacritty;
+let
+  cfg = config.myPrograms.alacritty;
+
+  terminal-launcher = pkgs.writeScript "alacritty-launcher" ''
+    (alacritty msg create-window "$@" || alacritty "$@")
+  '';
 
 in {
   options.myPrograms.alacritty = {
@@ -30,10 +35,12 @@ in {
     };
 
     home.sessionVariables = {
-      TERM="alacritty";
+      TERM = "alacritty";
+      TERM_LAUNCHER = "${terminal-launcher}";
     };
     home.programs.nushell.extraEnv = mkIf config.myPrograms.nushell.enable ''
       let-env TERM = alacritty
+      let-env TERM_LAUNCHER = ${terminal-launcher}
     '';
   };
 }

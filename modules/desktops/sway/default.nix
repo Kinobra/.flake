@@ -66,7 +66,7 @@ in
       in {
         modifier = "Mod4";
 
-        terminal = "${config.home.sessionVariables.TERM}";
+        terminal = "${config.home.sessionVariables.TERM_LAUNCHER or config.home.sessionVariables.TERM}";
 
         menu = let
           terminal = config.home.sway.config.terminal;

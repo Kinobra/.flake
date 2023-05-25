@@ -30,5 +30,6 @@
     ./waybar
     ./yt-dlp
     ./zathura
+    ./zellij
   ];
 }

@@ -62,7 +62,7 @@ in
       config = let
         gaps = 6;
         borders = 0;
-        mode_power = "| power [ e | l | h | s | r ]"; # exit | lockout | hibernate | shutdown | restart
+        mode_power = "| power [ e | l | h | s | r ]"; # [e]xit | [l]ock | [h]ibernate | [s]hutdown | [r]estart
       in {
         modifier = "Mod4";
 

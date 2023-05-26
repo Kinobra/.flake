@@ -57,7 +57,7 @@
           networking.domain = "valkyrja.eu";
           networking.hostName = "ceres";
           myProfiles.server-minimal.enable = true;
-          myHardware.ceres.enable = true;
+          myHardware."ceres".enable = true;
         }
       ];
     };
@@ -73,11 +73,11 @@
 
           networking.hostName = "minerva";
           myDesktops.sway.enable = true;
-          myHardware.minerva.enable = true;
           myProfiles = {
             desktop.enable = true;
           };
-          myThemes.abyss.enable = true;
+          myHardware."minerva".enable = true;
+          myThemes."abyss".enable = true;
 
           myPrograms = {
             light.enable = true;
@@ -108,8 +108,8 @@
             gaming.enable = true;
             virtualisation.enable = true;
           };
-          myHardware.nixos.enable = true;
-          myThemes.abyss.enable = true;
+          myHardware."nixos".enable = true;
+          myThemes."abyss".enable = true;
 
           myPrograms = {
             bottles.enable = true;

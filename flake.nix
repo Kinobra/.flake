@@ -81,8 +81,6 @@
 
           myPrograms = {
             light.enable = true;
-            bottles.enable = true;
-            zellij.enable = true;
           };
 
           environment.systemPackages = [

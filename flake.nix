@@ -73,8 +73,10 @@
 
           networking.hostName = "minerva";
           myDesktops.sway.enable = true;
-          myProfiles.desktop-minimal.enable = true;
           myHardware.minerva.enable = true;
+          myProfiles = {
+            desktop.enable = true;
+          };
           myThemes.abyss.enable = true;
 
           myPrograms = {
@@ -103,10 +105,19 @@
 
           networking.hostName = "nixos";
           myDesktops.sway.enable = true;
-          myProfiles.desktop.enable = true;
+          myProfiles = {
+            desktop.enable = true;
+            gaming.enable = true;
+            virtualisation.enable = true;
+          };
           myHardware.nixos.enable = true;
           myThemes.abyss.enable = true;
 
+          myPrograms = {
+            bottles.enable = true;
+            brave.enable = true;
+            helvum.enable = true;
+          };
           myServices = {
             easyeffects.enable = true;
           };

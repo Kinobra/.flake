@@ -1,4 +1,4 @@
-{ options, config, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 with lib;
 let cfg = config.myServices.virtualisation;
@@ -19,6 +19,7 @@ in {
       initialPassword = "test";
       group = "nixosvmtest";
     };
+
     virtualisation.vmVariant = {
       virtualisation = {
         qemu = {

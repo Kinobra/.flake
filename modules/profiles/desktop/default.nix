@@ -1,4 +1,4 @@
-{ options, config, lib, pkgs, ... }:
+{ config, lib, ... }:
 
 with lib;
 let cfg = config.myProfiles.desktop;
@@ -12,12 +12,14 @@ in {
   };
 
   config = mkIf cfg.enable {
-    myProfiles.desktop-minimal.enable = true;
+    myProfiles = {
+      desktop-minimal.enable = true;
+      gaming.enable = true;
+    };
 
     myPrograms = {
       bottles.enable = true;
       brave.enable = true;
-      gaming.enable = true;
       helvum.enable = true;
     };
 

@@ -1,10 +1,10 @@
-{ options, config, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 with lib;
-let cfg = config.myPrograms.gaming;
+let cfg = config.myPrograms.lutris;
 
 in {
-  options.myPrograms.gaming = {
+  options.myPrograms.lutris = {
     enable = mkOption {
       type = types.bool;
       default = false;
@@ -12,25 +12,10 @@ in {
   };
 
   config = mkIf cfg.enable {
-    programs.steam.enable = true;
-
-    home.programs = {
-      mangohud = {
-        enable = true;
-        enableSessionWide = true;
-        # settingsPerApplication.mpv = {
-        #   no_display = true;
-        # };
-      };
-    };
-
     home.packages = with pkgs; [
       # wine
       # winetricks
       lutris
-      # prismlauncher
-
-      ttyper
     ];
 
     # Starcitizen

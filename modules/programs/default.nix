@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ ... }:
 {
   imports = [
     ./alacritty
@@ -8,7 +8,6 @@
     ./direnv
     ./discord
     ./firefox
-    ./gaming
     ./git
     ./gpg
     ./helix
@@ -19,14 +18,19 @@
     ./lf
     ./librewolf
     ./light
+    ./lutris
+    ./mangohud
     ./monero-gui
     ./mpv
     ./ncmpc
     ./neovim
     ./nushell
+    ./prismlauncher
     ./signal
+    ./steam
     ./swaylock
     ./swww
+    ./ttyper
     ./waybar
     ./yt-dlp
     ./zathura

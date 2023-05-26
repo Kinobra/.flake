@@ -1,8 +1,9 @@
-{ config, lib, pkgs, ... }:
+{ ... }:
 {
   imports = [
     ./desktop
     ./desktop-minimal
+    ./gaming
     ./server
     ./server-minimal
   ];

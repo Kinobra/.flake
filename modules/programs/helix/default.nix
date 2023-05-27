@@ -30,6 +30,9 @@ let
   git-log = pkgs.writeScript "git-log"
     "${term} -e ${git} log";
 
+  git-diff = pkgs.writeScript "git-diff"
+    "${term} -e ${git} diff";
+
   git-push = pkgs.writeScript "git-push"
     "${term} -e ${git} push";
 
@@ -113,13 +116,14 @@ in {
               Q = ":q!";
               t = ":sh ${term}";
               v = {
-                g = ":sh ${gitui}";
-                f = ":sh ${git-fetch}";
-                s = ":sh ${git-status}";
-                l = ":sh ${git-log}";
-                u = ":sh ${git-push}";
-                d = ":sh ${git-pull}";
-                c = ":sh ${git-commit}";
+                "f" = ":sh ${git-fetch}";
+                "s" = ":sh ${git-status}";
+                "c" = ":sh ${git-commit}";
+                "l" = ":sh ${git-log}";
+                "d" = ":sh ${git-diff}";
+                "<" = ":sh ${git-pull}";
+                ">" = ":sh ${git-push}";
+                "g" = ":sh ${gitui}";
               };
               w = ":w";
               W = ":w!";

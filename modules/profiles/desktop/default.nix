@@ -27,7 +27,7 @@ in {
     # };
 
     myPrograms = {
-      alacritty.enable = true;
+      # alacritty.enable = true;
       discord.enable = true;
       direnv.enable = true;
       firefox.enable = true;
@@ -36,7 +36,7 @@ in {
       helix.enable = true;
       imv.enable = true;
       keepassxc.enable = true;
-      # kitty.enable = true;
+      kitty.enable = true;
       lf.enable = true;
       ncmpc.enable = true;
       mpv.enable = true;

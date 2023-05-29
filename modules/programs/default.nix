@@ -10,6 +10,7 @@
     ./firefox
     ./git
     ./gpg
+    ./gping
     ./helix
     ./helvum
     ./imv

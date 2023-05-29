@@ -63,6 +63,7 @@ in
         gaps = 6;
         borders = 0;
         mode_power = "| power [ e | l | h | s | r ]"; # [e]xit | [l]ock | [h]ibernate | [s]hutdown | [r]estart
+        mode_resize = "| resize";
       in {
         modifier = "Mod4";
 
@@ -145,6 +146,7 @@ in
           "${modifier}+g" = "exec ${terminal} -e ${pkgs.bottom}/bin/btm";
           "${modifier}+u" = "exec ${config.home.sessionVariables.BROWSER}";
           "${modifier}+Shift+e" = "mode '${mode_power}'";
+          "${modifier}+r" = "mode '${mode_resize}'";
           "${modifier}+p" = "exec ${grim} -g \"$(${slurp})\" - | ${wl-copy}";
           "${modifier}+Shift+p" = "exec ${grim} -o $(swaymsg -t get_outputs | ${jq} -r '.[] | select(.focused) | .name') - | ${wl-copy}";
           # Misc
@@ -164,8 +166,18 @@ in
             "s" = "exec systemctl poweroff";
             "r" = "exec systemctl reboot";
             "h" = "exec systemctl hibernate";
-            "Return" = "mode 'default'";
-            "Escape" = "mode 'default'";
+            "Return" = "mode default";
+            "Escape" = "mode default";
+          };
+          "${mode_resize}" = let
+            resize_step = "10px";
+          in {
+            "h" = "resize shrink width ${resize_step}";
+            "j" = "resize grow height ${resize_step}";
+            "k" = "resize shrink height ${resize_step}";
+            "l" = "resize grow width ${resize_step}";
+            "Return" = "mode default";
+            "Escape" = "mode default";
           };
         };
       };

@@ -48,6 +48,7 @@ in {
           "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false; # Do not recommend features
           "browser.aboutwelcome.enabled" = false;
           "browser.bookmarks.addedImportButton" = false;
+          "signon.rememberSignons" = false;
 
           # appearance
           "browser.toolbars.bookmarks.visibility" = "never";

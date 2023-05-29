@@ -1,4 +1,4 @@
-{ options, config, lib, pkgs, ... }:
+{ config, lib, ... }:
 
 with lib;
 let cfg = config.myServices.openssh;
@@ -16,7 +16,7 @@ in {
     services.openssh = {
       enable = true;
       settings = {
-        # permitRootLogin = "no";
+        permitRootLogin = "no";
         passwordAuthentication = false;
       };
     };

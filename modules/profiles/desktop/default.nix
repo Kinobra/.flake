@@ -33,6 +33,7 @@ in {
       firefox.enable = true;
       git.enable = true;
       gpg.enable = true;
+      gping.enable = true;
       helix.enable = true;
       imv.enable = true;
       keepassxc.enable = true;

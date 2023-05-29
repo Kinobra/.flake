@@ -1,4 +1,4 @@
-{ options, config, lib, pkgs, modulesPath, ... }:
+{ config, lib, ... }:
 
 with lib;
 let cfg = config.myHardware.ceres;
@@ -11,43 +11,53 @@ in {
     };
   };
 
-  config = mkIf cfg.enable {
-
-    ## hardware-configuration.nix
-
-    boot.initrd.availableKernelModules = [
-      "virtio_net" "virtio_pci" "virtio_mmio" "virtio_blk" "virtio_scsi" "9p" "9pnet_virtio" # module
-      "ata_piix" "virtio_pci" "virtio_scsi" "xhci_pci" "sd_mod" "sr_mod" # hardware-configuration
-    ];
-    boot.initrd.kernelModules = [ "virtio_balloon" "virtio_console" "virtio_rng" ];
-    boot.initrd.postDeviceCommands = lib.mkIf (!config.boot.initrd.systemd.enable)
-      ''
-        # Set the system time from the hardware clock to work around a
-        # bug in qemu-kvm > 1.5.2 (where the VM clock is initialised
-        # to the *boot time* of the host).
-        hwclock -s
+  config = mkMerge [
+    {
+      programs.ssh.extraConfig = ''
+        Host ceres
+        	HostName 91.107.221.240
+        	IdentityFile ~/.ssh/sourcehut
+        	User ${config.user.name}
       '';
+    }
+    (mkIf cfg.enable {
 
-    boot.kernelModules = [ ];
-    boot.extraModulePackages = [ ];
+      ## hardware-configuration.nix
 
-    fileSystems."/" =
-      { device = "/dev/disk/by-uuid/e2a01644-091e-4df6-a2cf-78b4be9a32c2";
-        fsType = "ext4";
-      };
+      boot.initrd.availableKernelModules = [
+        "virtio_net" "virtio_pci" "virtio_mmio" "virtio_blk" "virtio_scsi" "9p" "9pnet_virtio" # module
+        "ata_piix" "virtio_pci" "virtio_scsi" "xhci_pci" "sd_mod" "sr_mod" # hardware-configuration
+      ];
+      boot.initrd.kernelModules = [ "virtio_balloon" "virtio_console" "virtio_rng" ];
+      boot.initrd.postDeviceCommands = lib.mkIf (!config.boot.initrd.systemd.enable)
+        ''
+          # Set the system time from the hardware clock to work around a
+          # bug in qemu-kvm > 1.5.2 (where the VM clock is initialised
+          # to the *boot time* of the host).
+          hwclock -s
+        '';
 
-    swapDevices = [ ];
+      boot.kernelModules = [ ];
+      boot.extraModulePackages = [ ];
 
-    networking.useDHCP = lib.mkDefault true;
+      fileSystems."/" =
+        { device = "/dev/disk/by-uuid/e2a01644-091e-4df6-a2cf-78b4be9a32c2";
+          fsType = "ext4";
+        };
 
-    nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-    hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+      swapDevices = [ ];
 
-    ## configuration.nix
+      networking.useDHCP = lib.mkDefault true;
 
-    boot.loader.grub.enable = true;
-    boot.loader.grub.device = "/dev/sda";
+      hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+      nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
-    system.stateVersion = "22.11";
-  };
+      ## configuration.nix
+
+      boot.loader.grub.enable = true;
+      boot.loader.grub.device = "/dev/sda";
+
+      system.stateVersion = "22.11";
+    })
+  ];
 }

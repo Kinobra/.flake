@@ -27,7 +27,6 @@ in {
     };
 
     myPrograms = {
-      bottom.enable = true;
       lf.enable = true;
       nushell.enable = true;
       helix.enable = true;

@@ -12,8 +12,10 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [
+    environment.systemPackages = with pkgs; [
       git
+      helix
+      lf
     ];
 
     system.autoUpgrade = {
@@ -24,12 +26,6 @@ in {
         lower = "01:00";
         upper = "02:00";
       };
-    };
-
-    myPrograms = {
-      lf.enable = true;
-      nushell.enable = true;
-      helix.enable = true;
     };
 
     myServices = {

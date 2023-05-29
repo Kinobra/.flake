@@ -56,7 +56,7 @@
         {
           networking.domain = "valkyrja.eu";
           networking.hostName = "ceres";
-          myProfiles.server-minimal.enable = true;
+          myProfiles.server.enable = true;
           myHardware."ceres".enable = true;
         }
       ];

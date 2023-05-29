@@ -1,4 +1,4 @@
-{ options, config, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 with lib;
 let cfg = config.myProfiles.server;
@@ -12,11 +12,30 @@ in {
   };
 
   config = mkIf cfg.enable {
-    myProfiles.server-minimal.enable = true;
+    home.packages = with pkgs; [
+      git
+    ];
+
+    system.autoUpgrade = {
+      enable = true;
+      flake = "sourcehut:~sntx/flake";
+      allowReboot = true;
+      rebootWindow = {
+        lower = "01:00";
+        upper = "02:00";
+      };
+    };
+
+    myPrograms = {
+      lf.enable = true;
+      nushell.enable = true;
+      helix.enable = true;
+    };
 
     myServices = {
-      nginx.enable = true;
-      murmur.enable = true;
+      fail2ban.enable = true;
+      nix.enable = true;
+      openssh.enable = true;
     };
   };
 }

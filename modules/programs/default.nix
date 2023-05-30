@@ -5,6 +5,7 @@
     ./bottles
     ./brave
     ./cryptomator
+    ./delta
     ./direnv
     ./discord
     ./firefox

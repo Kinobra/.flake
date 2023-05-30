@@ -115,6 +115,7 @@ in {
               q = ":q";
               Q = ":q!";
               t = ":sh ${term}";
+              T = ":insert-output echo '	'";
               v = {
                 "f" = ":sh ${git-fetch}";
                 "s" = ":sh ${git-status}";

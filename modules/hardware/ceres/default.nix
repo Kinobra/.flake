@@ -12,6 +12,7 @@ in {
   };
 
   config = mkMerge [
+    # write config for all hosts
     {
       programs.ssh.extraConfig = ''
         Host ceres
@@ -20,6 +21,8 @@ in {
         	User ${config.user.name}
       '';
     }
+
+    # write config for this host
     (mkIf cfg.enable {
 
       ## hardware-configuration.nix

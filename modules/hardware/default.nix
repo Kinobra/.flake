@@ -4,5 +4,6 @@
     ./ceres
     ./minerva
     ./nixos
+    ./orion
   ];
 }

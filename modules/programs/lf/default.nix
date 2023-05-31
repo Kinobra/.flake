@@ -12,7 +12,17 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ ctpv ];
+    home.packages = with pkgs; [
+      # file previews in the terminal
+      ctpv
+      # programs requried by ctpv
+      delta  # diff
+      ffmpeg # audio
+      gnupg  # gpg-encrypted
+      jq     # json
+      unzip  # zip
+      lynx   # html
+    ];
     home.programs.lf = {
       enable = true;
       extraConfig = ''

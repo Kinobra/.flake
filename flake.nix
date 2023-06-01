@@ -20,23 +20,14 @@
 
   # Output config, or config for NixOS system
   outputs = { nixpkgs, home-manager, nx-fetch, nx-gen, nx-pkgs, ... }: {
+
     # Define a devshell for working with the flake
     devShells = let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages."${system}";
     in {
       "${system}".default = pkgs.mkShell {
-        # Additional dev-shell environment variables can be set directly
-        # MY_CUSTOM_DEVELOPMENT_VAR = "something else";
-
-        # Extra inputs can be added here
-        packages = with pkgs; [
-          nil
-        ];
-
-        # A shell hook can be defined here
-        # shellHook = ''
-        # '';
+        packages = with pkgs; [ nil ];
       };
     };
 

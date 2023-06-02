@@ -97,7 +97,6 @@
           myThemes."abyss".enable = true;
 
           myPrograms = {
-            bottles.enable = true;
             brave.enable = true;
             helvum.enable = true;
           };

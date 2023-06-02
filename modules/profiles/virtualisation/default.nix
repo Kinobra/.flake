@@ -12,6 +12,11 @@ in {
   };
 
   config = mkIf cfg.enable {
-    myServices.virtualisation.enable = true;
+    myPrograms = {
+      bottles.enable = true;
+    };
+    myServices = {
+      virtualisation.enable = true;
+    };
   };
 }

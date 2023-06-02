@@ -38,21 +38,21 @@
     # Juno, Vesta, Minerva, Ceres, Diana, Venus,
     # Mars, Mercurius, Iovis, Neptunus, Vulcanus, Apollo
 
-    # Define a system called "ceres"
+    # Define a server called "ceres"
     nixosConfigurations."ceres" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         home-manager.nixosModules.home-manager
         (import ./modules)
         {
-          networking.domain = "valkyrja.eu";
           networking.hostName = "ceres";
+          networking.domain = "valkyrja.eu";
           myProfiles.server.enable = true;
         }
       ];
     };
 
-    # Define a system called "minerva"
+    # Define a laptop called "minerva"
     nixosConfigurations."minerva" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -81,7 +81,7 @@
       ];
     };
 
-    # Define a primary system called "nixos"
+    # Define a system called "nixos"
     nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [

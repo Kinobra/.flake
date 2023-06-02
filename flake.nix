@@ -97,7 +97,6 @@
           myThemes."abyss".enable = true;
 
           myPrograms = {
-            brave.enable = true;
             helvum.enable = true;
           };
           myServices = {

@@ -15,7 +15,7 @@ in {
     home.services.easyeffects = {
       enable = true;
     };
-    home.sway.config.startup = mkIf home.sway.enable [
+    home.sway.config.startup = mkIf config.home.sway.enable [
       { command = "exec ${pkgs.easyeffects}/bin/easyeffects"; }
     ];
   };

@@ -1,4 +1,4 @@
-{ config, home-manager, ... }:
+{ config, ... }:
 
 {
   home-manager.users.${config.user.name}.xdg = {

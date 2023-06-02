@@ -1,4 +1,4 @@
-{ options, config, lib, pkgs, ... }:
+{ config, lib, ... }:
 
 with lib;
 let cfg = config.myServices.nix;

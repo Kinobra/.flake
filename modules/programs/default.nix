@@ -27,6 +27,7 @@
     ./ncmpc
     ./neovim
     ./nushell
+    ./nx
     ./prismlauncher
     ./signal
     ./steam

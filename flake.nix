@@ -19,7 +19,7 @@
   };
 
   # Output config, or config for NixOS system
-  outputs = { nixpkgs, home-manager, nx-fetch, nx-gen, nx-pkgs, ... }: {
+  outputs = { nixpkgs, home-manager, nx-fetch, nx-gen, nx-pkgs, ... }@inputs: {
 
     # Define a devshell for working with the flake
     devShells = let
@@ -41,6 +41,7 @@
     # Define a server called "ceres"
     nixosConfigurations."ceres" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      specialArgs = {inherit inputs;};
       modules = [
         home-manager.nixosModules.home-manager
         (import ./modules)
@@ -55,6 +56,7 @@
     # Define a laptop called "minerva"
     nixosConfigurations."minerva" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      specialArgs = {inherit inputs;};
       modules = [
         home-manager.nixosModules.home-manager
         (import ./modules)
@@ -71,12 +73,6 @@
           myPrograms = {
             light.enable = true;
           };
-
-          environment.systemPackages = [
-            nx-fetch.packages."x86_64-linux".default
-            nx-gen.packages."x86_64-linux".default
-            nx-pkgs.packages."x86_64-linux".default
-          ];
         }
       ];
     };
@@ -84,6 +80,7 @@
     # Define a system called "nixos"
     nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      specialArgs = {inherit inputs;};
       modules = [
         home-manager.nixosModules.home-manager
         (import ./modules)
@@ -107,12 +104,6 @@
           myServices = {
             easyeffects.enable = true;
           };
-
-          environment.systemPackages = [
-            nx-fetch.packages."x86_64-linux".default
-            nx-gen.packages."x86_64-linux".default
-            nx-pkgs.packages."x86_64-linux".default
-          ];
         }
       ];
     };

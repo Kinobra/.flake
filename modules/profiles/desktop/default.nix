@@ -40,6 +40,7 @@ in {
       kitty.enable = true;
       lf.enable = true;
       ncmpc.enable = true;
+      nx.enable = true;
       mpv.enable = true;
       nushell.enable = true;
       signal.enable = true;

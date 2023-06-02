@@ -19,7 +19,7 @@ stdenv.mkDerivation rec {
 
   meta = {
     description = "GoogleDot-Black cursor theme";
-    homepage = https://github.com/ful1e5/Google_Cursor;
+    homepage = "https://github.com/ful1e5/Google_Cursor";
     platforms = platforms.all;
     license = licenses.gpl3;
     maintainers = with maintainers; [ sntx ];

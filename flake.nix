@@ -48,7 +48,6 @@
           networking.domain = "valkyrja.eu";
           networking.hostName = "ceres";
           myProfiles.server.enable = true;
-          myHardware."ceres".enable = true;
         }
       ];
     };
@@ -67,7 +66,6 @@
           myProfiles = {
             desktop.enable = true;
           };
-          myHardware."minerva".enable = true;
           myThemes."abyss".enable = true;
 
           myPrograms = {
@@ -99,7 +97,6 @@
             gaming.enable = true;
             virtualisation.enable = true;
           };
-          myHardware."nixos".enable = true;
           myThemes."abyss".enable = true;
 
           myPrograms = {

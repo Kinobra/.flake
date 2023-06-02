@@ -25,6 +25,7 @@ with lib;
   };
 
   config = {
+    myHardware."${config.networking.hostName}".enable = true;
 
     user = {
       name = "sntx";

@@ -15,7 +15,7 @@ in {
     theme = mkDefault {
       name = "abyss";
       type = "dark";
-      opacity = 1 - (1 / 1.618033988749895); # golden ratio, nice
+      opacity = (1 / 1.618033988749895); # golden ratio, nice
       colors = {
         primary = {
           foreground = "#f8f8f8";

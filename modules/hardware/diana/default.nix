@@ -22,22 +22,20 @@ in {
 
       boot.initrd.availableKernelModules = [
         "virtio_net" "virtio_pci" "virtio_mmio" "virtio_blk" "virtio_scsi" "9p" "9pnet_virtio" # module
-        "ata_piix" "virtio_pci" "virtio_scsi" "xhci_pci" "sd_mod" "sr_mod" # hardware-configuration
+        "ahci" "xhci_pci" "virtio_pci" "sr_mod" "virtio_blk" # hardware-configuration
       ];
-      boot.initrd.kernelModules = [ "virtio_balloon" "virtio_console" "virtio_rng" ];
-      boot.initrd.postDeviceCommands = lib.mkIf (!config.boot.initrd.systemd.enable)
-        ''
-          # Set the system time from the hardware clock to work around a
-          # bug in qemu-kvm > 1.5.2 (where the VM clock is initialised
-          # to the *boot time* of the host).
-          hwclock -s
-        '';
+      boot.initrd.kernelModules = [ ];
 
-      boot.kernelModules = [ ];
+      boot.kernelModules = [ "kvm-amd" ];
       boot.extraModulePackages = [ ];
 
       fileSystems."/" =
-        { device = "/dev/disk/by-uuid/e2a01644-091e-4df6-a2cf-78b4be9a32c2";
+        { device = "/dev/disk/by-uuid/b2c88152-d707-4b17-8e57-588f16952c27";
+          fsType = "btrfs";
+        };
+
+      fileSystems."/boot" =
+        { device = "/dev/disk/by-uuid/b2c88152-d707-4b17-8e57-588f16952c27";
           fsType = "btrfs";
         };
 

@@ -52,6 +52,17 @@ in
       ];
     };
 
+    services.dbus.enable = true;
+    xdg.portal = {
+      enable = true;
+      wlr.enable = true;
+      extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
+    };
+    environment.sessionVariables = {
+      XDG_SESSION_TYPE = "wayland";
+      XDG_CURRENT_DESKTOP = "sway";
+    };
+
     home.configFile."sway/wallpaper.png".source = ./wallpaper.png;
 
     hardware.opengl.enable = true; # required by sway, home-manager can't enable this
@@ -113,6 +124,14 @@ in
         };
 
         startup = let
+          # c.f. https://nixos.wiki/wiki/Sway
+          dbus-sway-environment = pkgs.writeScript "dbus-sway-environment"
+            ''
+              dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+              systemctl --user stop pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
+              systemctl --user start pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
+            '';
+
           background-init = pkgs.writeScript "background-init"
             ''
               ${pkgs.swww}/bin/swww init
@@ -120,6 +139,7 @@ in
             '';
         in [
           { command = "exec ${pkgs.autotiling-rs}/bin/autotiling-rs"; }
+          { command = "exec ${dbus-sway-environment}"; always = true; }
           { command = "exec ${background-init}"; }
         ];
 

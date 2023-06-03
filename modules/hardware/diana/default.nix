@@ -1,10 +1,10 @@
 { config, lib, ... }:
 
 with lib;
-let cfg = config.myHardware.ceres;
+let cfg = config.myHardware.diana;
 
 in {
-  options.myHardware.ceres = {
+  options.myHardware.diana = {
     enable = mkOption {
       type = types.bool;
       default = false;

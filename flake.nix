@@ -15,6 +15,7 @@
     # my custom programs
     nx-fetch.url = "sourcehut:~sntx/nx-fetch";
     nx-gen.url = "sourcehut:~sntx/nx-gen";
+    nx-launcher.url = "sourcehut:~sntx/nx-launcher";
     nx-pkgs.url = "sourcehut:~sntx/nx-pkgs";
   };
 

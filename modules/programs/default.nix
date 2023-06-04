@@ -27,7 +27,10 @@
     ./ncmpc
     ./neovim
     ./nushell
-    ./nx
+    ./nx-fetch
+    ./nx-gen
+    ./nx-launcher
+    ./nx-pkgs
     ./prismlauncher
     ./signal
     ./steam

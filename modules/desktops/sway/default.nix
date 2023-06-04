@@ -14,9 +14,10 @@ in
 
   config = mkIf cfg.enable {
     myPrograms = {
-      waybar.enable = true;
-      swww.enable = true;
+      nx-launcher.enable = true;
       swaylock.enable = true;
+      swww.enable = true;
+      waybar.enable = true;
     };
 
     myServices = {
@@ -82,7 +83,7 @@ in
 
         menu = let
           terminal = config.home.sway.config.terminal;
-          launcher = "${pkgs.sway-launcher-desktop}/bin/sway-launcher-desktop";
+          launcher = config.home.sessionVariables.LAUNCHER;
         in "${terminal} --class=launcher -e ${launcher}";
 
         bars = [{ command = "${config.home.sessionVariables.BAR}"; }];
@@ -139,7 +140,7 @@ in
             '';
         in [
           { command = "exec ${pkgs.autotiling-rs}/bin/autotiling-rs"; }
-          { command = "exec ${dbus-sway-environment}"; always = true; }
+          { command = "exec ${dbus-sway-environment}"; } # always = true; 
           { command = "exec ${background-init}"; }
         ];
 

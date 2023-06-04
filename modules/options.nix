@@ -32,7 +32,7 @@ with lib;
       # name = let name = builtins.getEnv "USER";
       description = "sntx";
       group = "sntx";
-      extraGroups = [ "wheel" ];
+      extraGroups = [ "wheel" "network" ];
       # extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
       isNormalUser = true;
       # in if elem name [ "" "root" ] then "sntx" else name;

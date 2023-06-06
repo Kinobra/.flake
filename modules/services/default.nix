@@ -10,6 +10,7 @@
     ./nebula
     ./nginx
     ./nix
+    ./nix-serve
     ./openssh
     ./pipewire
     ./swayidle

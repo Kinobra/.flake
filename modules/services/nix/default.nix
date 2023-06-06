@@ -11,26 +11,33 @@ in {
     };
   };
 
-  config = mkIf cfg.enable {
-    nix = {
-      gc = {
-        automatic = true;
-        dates = "daily";
-        options = "--delete-older-than 32d";
-      };
-      optimise = {
-        automatic = true;
-        dates = [ "daily" ];
-      };
-      settings = {
-        # keep-outputs = true;
-        # keep-derivations = true;
-        auto-optimise-store = true;
-        # cores = 32;
-        # max-jobs = 32;
-        sandbox = true;
+  config = mkMerge [
+    {
+      nix.settings = {
+        substituters = [
+          "https://cache.nixos.org/"
+        ];
         experimental-features = [ "nix-command" "flakes" ];
+        sandbox = true;
       };
-    };
-  };
+    }
+    (mkIf cfg.enable {
+      nix = {
+        gc = {
+          automatic = true;
+          dates = "daily";
+          options = "--delete-older-than 32d";
+        };
+        optimise = {
+          automatic = true;
+          dates = [ "daily" ];
+        };
+        settings = {
+          # keep-outputs = true;
+          # keep-derivations = true;
+          auto-optimise-store = true;
+        };
+      };
+    })
+  ];
 }

@@ -32,10 +32,14 @@ in {
           automatic = true;
           dates = [ "daily" ];
         };
-        settings = {
+        settings = let
+          users = [ "@wheel" ];
+        in {
           # keep-outputs = true;
           # keep-derivations = true;
           auto-optimise-store = true;
+          allowed-users = users;
+          trusted-users = users;
         };
       };
     })

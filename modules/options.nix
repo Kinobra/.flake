@@ -86,11 +86,6 @@ with lib;
     users.groups.${config.user.group} = {};
     users.users.${config.user.name} = mkAliasDefinitions options.user;
 
-    # nix.settings = let users = [ "root" config.user.name ];
-    # in {
-    #   trusted-users = users;
-    #   allowed-users = users;
-    # };
 
     # env.PATH = [ "$XDG_CONFIG_HOME/dotfiles/bin" "$XDG_BIN_HOME" "$PATH" ];
 

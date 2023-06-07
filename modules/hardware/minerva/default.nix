@@ -11,85 +11,90 @@ in {
     };
   };
 
-  config = mkIf cfg.enable {
+  config = mkMerge [
+    # write config for all hosts
+    { }
 
-    ## hardware-configuration.nix
+    # write config for this host
+    (mkIf cfg.enable {
+      ## hardware-configuration.nix
 
-    boot.kernelPackages = pkgs.linuxPackages_zen;
+      boot.kernelPackages = pkgs.linuxPackages_zen;
 
-    boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
-    boot.initrd.kernelModules = [ ];
-    boot.kernelModules = [ "kvm-intel" ];
-    boot.extraModulePackages = [ ];
+      boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
+      boot.initrd.kernelModules = [ ];
+      boot.kernelModules = [ "kvm-intel" ];
+      boot.extraModulePackages = [ ];
 
-    boot.initrd.luks.devices = {
-      "luks-cc7369ff-1cb5-43a1-9167-e98ae0b11886" = {
-        device = "/dev/disk/by-uuid/cc7369ff-1cb5-43a1-9167-e98ae0b11886";
+      boot.initrd.luks.devices = {
+        "luks-cc7369ff-1cb5-43a1-9167-e98ae0b11886" = {
+          device = "/dev/disk/by-uuid/cc7369ff-1cb5-43a1-9167-e98ae0b11886";
+        };
+        "luks-8080a3a6-6063-4c78-a7e5-532b496a0a86" = {
+          device = "/dev/disk/by-uuid/8080a3a6-6063-4c78-a7e5-532b496a0a86";
+          keyFile = "/crypto_keyfile.bin";
+        };
       };
-      "luks-8080a3a6-6063-4c78-a7e5-532b496a0a86" = {
-        device = "/dev/disk/by-uuid/8080a3a6-6063-4c78-a7e5-532b496a0a86";
-        keyFile = "/crypto_keyfile.bin";
-      };
-    };
-    boot.initrd.secrets = {
-      "/crypto_keyfile.bin" = null;
-    };
-
-    fileSystems."/" =
-      { device = "/dev/disk/by-uuid/dfe59648-89c5-467b-b1a4-a2ccc6fdc2ba";
-        fsType = "ext4";
-      };
-
-    fileSystems."/boot/efi" =
-      { device = "/dev/disk/by-uuid/AB73-3953";
-        fsType = "vfat";
+      boot.initrd.secrets = {
+        "/crypto_keyfile.bin" = null;
       };
 
-    swapDevices =
-      [ { device = "/dev/disk/by-uuid/7b6f237f-b986-406c-9423-26fbd191f353"; }
-      ];
+      fileSystems."/" =
+        { device = "/dev/disk/by-uuid/dfe59648-89c5-467b-b1a4-a2ccc6fdc2ba";
+          fsType = "ext4";
+        };
 
-    networking.useDHCP = lib.mkDefault true;
+      fileSystems."/boot/efi" =
+        { device = "/dev/disk/by-uuid/AB73-3953";
+          fsType = "vfat";
+        };
 
-    nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+      swapDevices =
+        [ { device = "/dev/disk/by-uuid/7b6f237f-b986-406c-9423-26fbd191f353"; }
+        ];
 
-    powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand"; #powersave #ondemand #performance
-    hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+      networking.useDHCP = lib.mkDefault true;
 
-    hardware.enableRedistributableFirmware = true;
+      nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
-    ## configuration.nix
+      powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand"; #powersave #ondemand #performance
+      hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-    boot.loader.systemd-boot.enable = true;
-    boot.loader.efi.canTouchEfiVariables = true;
-    boot.loader.efi.efiSysMountPoint = "/boot/efi";
+      hardware.enableRedistributableFirmware = true;
 
-    networking.networkmanager.enable = true;
+      ## configuration.nix
 
-    time.timeZone = "Europe/Berlin";
+      boot.loader.systemd-boot.enable = true;
+      boot.loader.efi.canTouchEfiVariables = true;
+      boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
-    i18n.defaultLocale = "en_GB.UTF-8";
-    i18n.extraLocaleSettings = {
-      LC_ADDRESS = "de_DE.UTF-8";
-      LC_IDENTIFICATION = "de_DE.UTF-8";
-      LC_MEASUREMENT = "de_DE.UTF-8";
-      LC_MONETARY = "de_DE.UTF-8";
-      LC_NAME = "de_DE.UTF-8";
-      LC_NUMERIC = "de_DE.UTF-8";
-      LC_PAPER = "de_DE.UTF-8";
-      LC_TELEPHONE = "de_DE.UTF-8";
-      LC_TIME = "de_DE.UTF-8";
-    };
+      networking.networkmanager.enable = true;
 
-    services.xserver = {
-      layout = "us";
-      xkbVariant = "";
-    };
+      time.timeZone = "Europe/Berlin";
 
-    # IPTS
-    # microsoft-surface.ipts.enable = true;
-    # microsoft-surface.surface-control.enable = true;
+      i18n.defaultLocale = "en_GB.UTF-8";
+      i18n.extraLocaleSettings = {
+        LC_ADDRESS = "de_DE.UTF-8";
+        LC_IDENTIFICATION = "de_DE.UTF-8";
+        LC_MEASUREMENT = "de_DE.UTF-8";
+        LC_MONETARY = "de_DE.UTF-8";
+        LC_NAME = "de_DE.UTF-8";
+        LC_NUMERIC = "de_DE.UTF-8";
+        LC_PAPER = "de_DE.UTF-8";
+        LC_TELEPHONE = "de_DE.UTF-8";
+        LC_TIME = "de_DE.UTF-8";
+      };
 
-    system.stateVersion = "22.11";
-  };
+      services.xserver = {
+        layout = "us";
+        xkbVariant = "";
+      };
+
+      # IPTS
+      # microsoft-surface.ipts.enable = true;
+      # microsoft-surface.surface-control.enable = true;
+
+      system.stateVersion = "22.11";
+    })
+  ];
 }

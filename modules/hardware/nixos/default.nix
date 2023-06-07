@@ -11,78 +11,84 @@ in {
     };
   };
 
-  config = mkIf cfg.enable {
+  config = mkMerge [
+    # write config for all hosts
+    { }
 
-    ## hardware-configuration.nix
+    # write config for this host
+    (mkIf cfg.enable {
 
-    boot.kernelPackages = pkgs.linuxPackages_zen;
+      ## hardware-configuration.nix
 
-    boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
-    boot.initrd.kernelModules = [ "dm-snapshot" ];
-    boot.kernelModules = [ "kvm-amd" ];
-    boot.extraModulePackages = [ ];
+      boot.kernelPackages = pkgs.linuxPackages_zen;
 
-    boot.initrd.luks.devices = {
-      root = {
-        device = "/dev/disk/by-uuid/9eafa0b3-485a-40e6-8889-bb51135c54c4";
-        preLVM = true;
-        allowDiscards = true;
+      boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
+      boot.initrd.kernelModules = [ "dm-snapshot" ];
+      boot.kernelModules = [ "kvm-amd" ];
+      boot.extraModulePackages = [ ];
+
+      boot.initrd.luks.devices = {
+        root = {
+          device = "/dev/disk/by-uuid/9eafa0b3-485a-40e6-8889-bb51135c54c4";
+          preLVM = true;
+          allowDiscards = true;
+        };
       };
-    };
 
-    fileSystems."/" = {
-      device = "/dev/disk/by-uuid/9d53762d-d3af-47c6-9b09-7de43e7b9405";
-      fsType = "btrfs";
-    };
-    services.btrfs.autoScrub = {
-      enable = true;
-      fileSystems = [ "/" ];
-      interval = "monthly";
-    };
+      fileSystems."/" = {
+        device = "/dev/disk/by-uuid/9d53762d-d3af-47c6-9b09-7de43e7b9405";
+        fsType = "btrfs";
+      };
+      services.btrfs.autoScrub = {
+        enable = true;
+        fileSystems = [ "/" ];
+        interval = "monthly";
+      };
 
-    fileSystems."/boot" = {
-      device = "/dev/disk/by-uuid/B333-DFF7";
-      fsType = "vfat";
-    };
+      fileSystems."/boot" = {
+        device = "/dev/disk/by-uuid/B333-DFF7";
+        fsType = "vfat";
+      };
 
-    swapDevices = [
-      { device = "/dev/disk/by-uuid/e6db7ee6-c38e-4d2f-b83d-41e13b2c04ef"; }
-    ];
+      swapDevices = [
+        { device = "/dev/disk/by-uuid/e6db7ee6-c38e-4d2f-b83d-41e13b2c04ef"; }
+      ];
 
-    networking.useDHCP = lib.mkDefault true;
+      networking.useDHCP = lib.mkDefault true;
 
-    nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-    hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+      nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+      hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-    hardware.enableRedistributableFirmware = true;
+      hardware.enableRedistributableFirmware = true;
 
-    ## configuration.nix
+      ## configuration.nix
 
-    boot.loader.systemd-boot.enable = true;
-    boot.loader.efi.canTouchEfiVariables = true;
+      boot.loader.systemd-boot.enable = true;
+      boot.loader.efi.canTouchEfiVariables = true;
 
-    networking.networkmanager.enable = true;
+      networking.networkmanager.enable = true;
 
-    time.timeZone = "Europe/Berlin";
+      time.timeZone = "Europe/Berlin";
 
-    i18n.defaultLocale = "en_GB.UTF-8";
-    i18n.extraLocaleSettings = {
-      LC_ADDRESS = "de_DE.UTF-8";
-      LC_IDENTIFICATION = "de_DE.UTF-8";
-      LC_MEASUREMENT = "de_DE.UTF-8";
-      LC_MONETARY = "de_DE.UTF-8";
-      LC_NAME = "de_DE.UTF-8";
-      LC_NUMERIC = "de_DE.UTF-8";
-      LC_PAPER = "de_DE.UTF-8";
-      LC_TELEPHONE = "de_DE.UTF-8";
-      LC_TIME = "de_DE.UTF-8";
-    };
+      i18n.defaultLocale = "en_GB.UTF-8";
+      i18n.extraLocaleSettings = {
+        LC_ADDRESS = "de_DE.UTF-8";
+        LC_IDENTIFICATION = "de_DE.UTF-8";
+        LC_MEASUREMENT = "de_DE.UTF-8";
+        LC_MONETARY = "de_DE.UTF-8";
+        LC_NAME = "de_DE.UTF-8";
+        LC_NUMERIC = "de_DE.UTF-8";
+        LC_PAPER = "de_DE.UTF-8";
+        LC_TELEPHONE = "de_DE.UTF-8";
+        LC_TIME = "de_DE.UTF-8";
+      };
 
-    services.xserver = {
-      layout = "us";
-      xkbVariant = "";
-    };
+      services.xserver = {
+        layout = "us";
+        xkbVariant = "";
+      };
 
-    system.stateVersion = "22.11";
-  };
+      system.stateVersion = "22.11";
+    })
+  ];
 }

@@ -24,6 +24,7 @@
   enable = true;
   extraConfig = ''
     polkit.addRule(function(action, subject) {
+      // c.f. https://github.com/ValveSoftware/steam-for-linux/issues/7856#issuecomment-1339468383
       if (action.id === "org.freedesktop.NetworkManager.settings.modify.system") {
         var name = polkit.spawn(["cat", "/proc/" + subject.pid + "/comm"]);
         if (name.includes("steam")) {
@@ -31,6 +32,7 @@
           return polkit.Result.NO;
         }
       }
+      // c.f. https://nixos.wiki/wiki/Polkit
       if (action.id.indexOf("org.freedesktop.NetworkManager.") == 0 && subject.isInGroup("network")) {
         return polkit.Result.YES;
       }

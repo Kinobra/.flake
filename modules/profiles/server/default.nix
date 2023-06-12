@@ -28,10 +28,6 @@ in {
       };
     };
 
-    myPrograms = {
-      nushell.enable = true;
-    };
-
     myServices = {
       fail2ban.enable = true;
       nix.enable = true;

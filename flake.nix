@@ -48,8 +48,11 @@
         (import ./modules)
         {
           networking.hostName = "apollo";
-          # networking.domain = "";
           myProfiles.server.enable = true;
+
+          myServices = {
+            syncthing.enable = true;
+          };
         }
       ];
     };

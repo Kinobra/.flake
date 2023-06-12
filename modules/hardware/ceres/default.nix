@@ -16,7 +16,7 @@ in {
     {
       programs.ssh.extraConfig = ''
         Host ceres
-        	HostName 91.107.221.240
+        	HostName 5.75.233.44
         	IdentityFile ~/.ssh/sourcehut
         	User ${config.user.name}
       '';

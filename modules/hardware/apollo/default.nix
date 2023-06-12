@@ -48,6 +48,23 @@ in {
           fsType = "ext4";
         };
 
+      system.fsPackages = [ pkgs.sshfs ];
+      fileSystems."/mnt/box" =
+        { device = "u333008@u333008.your-storagebox.de:/";
+          fsType = "sshfs";
+          options = [
+            # Filesystem options
+            "allow_other"          # for non-root access
+            "_netdev"              # this is a network fs
+            "x-systemd.automount"  # mount on demand
+
+            # SSH options
+            "reconnect"              # handle connection drops
+            "ServerAliveInterval=15" # keep connections alive
+            "IdentityFile=/var/secrets/box"
+          ];
+        };
+
       swapDevices = [ ];
 
       networking.useDHCP = lib.mkDefault true;

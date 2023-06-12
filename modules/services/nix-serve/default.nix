@@ -13,16 +13,10 @@ in {
 
 
   config = mkMerge [
-    {
-      nix = {
-        settings = {
-          # substituters = [ ];
-          trusted-public-keys = [
-            "nixos-1.valkyrja.eu:lHFEsyz9HBX0H48QfFFPT+qDjdpsJ+3vRXlzE7TYF2U="
-          ];
-        };
-      };
-    }
+    # write config to all hosts
+    { }
+
+    # write config to this host (if enabled)
     (mkIf cfg.enable {
       services.nix-serve = {
         enable = true;

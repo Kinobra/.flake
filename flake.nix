@@ -39,6 +39,21 @@
     # Juno, Vesta, Minerva, Ceres, Diana, Venus,
     # Mars, Mercurius, Iovis, Neptunus, Vulcanus, Apollo
 
+    # Define a server called "apollo"
+    nixosConfigurations."apollo" = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = {inherit inputs;};
+      modules = [
+        home-manager.nixosModules.home-manager
+        (import ./modules)
+        {
+          networking.hostName = "apollo";
+          # networking.domain = "";
+          myProfiles.server.enable = true;
+        }
+      ];
+    };
+
     # Define a server called "ceres"
     nixosConfigurations."ceres" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";

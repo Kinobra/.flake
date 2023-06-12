@@ -74,8 +74,11 @@ in
       config = let
         gaps = 6;
         borders = 0;
-        mode_power = "| power [ e | l | h | s | r ]"; # [e]xit | [l]ock | [h]ibernate | [s]hutdown | [r]estart
-        mode_resize = "| resize";
+        mode = {
+          power = "| power [ e | l | h | s | r ]"; # [e]xit | [l]ock | [h]ibernate | [s]hutdown | [r]estart
+          resize = "| resize";
+          editor = "| editor [ i | c | o | p | u ]"; # [i] | [c]onfig | .[o]rg | [p]rojects | [u]ni
+        };
       in {
         modifier = "Mod4";
 
@@ -162,12 +165,11 @@ in
           "${modifier}+d" = "exec ${menu}";
           "${modifier}+Shift+c" = "reload";
           # Applications
-          "${modifier}+i" = "exec ${terminal} -e ${config.home.sessionVariables.EDITOR}";
-          "${modifier}+c" = "exec ${terminal} --working-directory ~/.flake -e ${config.home.sessionVariables.EDITOR}";
           "${modifier}+g" = "exec ${terminal} -e ${pkgs.bottom}/bin/btm";
           "${modifier}+u" = "exec ${config.home.sessionVariables.BROWSER}";
-          "${modifier}+Shift+e" = "mode '${mode_power}'";
-          "${modifier}+r" = "mode '${mode_resize}'";
+          "${modifier}+Shift+e" = "mode '${mode.power}'";
+          "${modifier}+r" = "mode '${mode.resize}'";
+          "${modifier}+i" = "mode '${mode.editor}'";
           "${modifier}+p" = "exec ${grim} -g \"$(${slurp})\" - | ${wl-copy}";
           "${modifier}+Shift+p" = "exec ${grim} -o $(swaymsg -t get_outputs | ${jq} -r '.[] | select(.focused) | .name') - | ${wl-copy}";
           # Misc
@@ -181,7 +183,7 @@ in
         };
 
         modes = lib.mkOptionDefault {
-          "${mode_power}" = {
+          "${mode.power}" = {
             "l" = "exec ${config.home.sessionVariables.LOCKSCREEN}";
             "e" = "exit";
             "s" = "exec systemctl poweroff";
@@ -190,13 +192,25 @@ in
             "Return" = "mode default";
             "Escape" = "mode default";
           };
-          "${mode_resize}" = let
+          "${mode.resize}" = let
             resize_step = "10px";
           in {
             "h" = "resize shrink width ${resize_step}";
             "j" = "resize grow height ${resize_step}";
             "k" = "resize shrink height ${resize_step}";
             "l" = "resize grow width ${resize_step}";
+            "Return" = "mode default";
+            "Escape" = "mode default";
+          };
+          "${mode.editor}" = let
+            editor = "${config.home.sessionVariables.EDITOR}";
+            terminal = config.home.sway.config.terminal;
+          in {
+            "i" = "exec ${terminal} -e ${editor}";
+            "c" = "exec ${terminal} --working-directory ~/.flake -e ${editor}";
+            "o" = "exec ${terminal} --working-directory ~/.org -e ${editor}";
+            "p" = "exec ${terminal} --working-directory ~/Documents/Projects -e ${editor}";
+            "u" = "exec ${terminal} --working-directory ~/Documents/Uni -e ${editor}";
             "Return" = "mode default";
             "Escape" = "mode default";
           };

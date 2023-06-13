@@ -20,4 +20,4 @@ tasks:
       nixos-rebuild dry-run --flake ./flake#nixos --fast
   - push: |
       cd flake
-      git push origin HEAD:$(git name-rev $(git rev-parse HEAD) | sed -E 's/^\S+\s(.*)$/\1/')
+      git push git@git.sr.ht:~sntx/flake HEAD:$(git name-rev $(git rev-parse HEAD) | sed -E 's/^\S+\s(.*)$/\1/')

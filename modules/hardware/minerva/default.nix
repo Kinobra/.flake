@@ -90,6 +90,8 @@ in {
         xkbVariant = "";
       };
 
+      hardware.bluetooth.enable = true;
+
       # IPTS
       # microsoft-surface.ipts.enable = true;
       # microsoft-surface.surface-control.enable = true;

@@ -110,6 +110,9 @@
           myPrograms = {
             light.enable = true;
           };
+          myServices = {
+            blueman.enable = true;
+          };
         }
       ];
     };

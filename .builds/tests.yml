@@ -5,11 +5,8 @@ secrets:
 environment:
   NIX_CONFIG: "experimental-features = nix-command flakes"
 tasks:
-  - update: |
-      cd flake
-      nix flake update --commit-lock-file
   - test-apollo: |
-      nixos-rebuild dry-run --flake ./flake#apollo
+      nixos-rebuild dry-run --flake ./flake#apollo --fast
   - test-ceres: |
       nixos-rebuild dry-run --flake ./flake#ceres --fast
   - test-diana: |
@@ -18,6 +15,3 @@ tasks:
       nixos-rebuild dry-run --flake ./flake#minerva --fast
   - test-nixos: |
       nixos-rebuild dry-run --flake ./flake#nixos --fast
-  - push: |
-      cd flake
-      git push git@git.sr.ht:~sntx/flake HEAD:$(git name-rev $(git rev-parse HEAD) | sed -E 's/^\S+\s(.*)$/\1/')

@@ -11,32 +11,14 @@ in {
     };
   };
 
-  config = mkIf cfg.enable {
-    # Your configuration here
+  config = mkMerge [
+    # write config for all hosts
+    { }
 
-    ### Home
-    # home.packages = with pkgs; [
-    #   lorem
-    # ];
-
-    # home.sessionVariables = {
-    #   LOREM="lorem";
-    # };
-
-    # xdg.configFile."lorem/config".source = ./lorem.conf;
-    # home.file.".lorem".text = "";
-
-    ### System
-    # environment.systemPackages = with pkgs; [
-    #   lorem
-    # ];
-
-    # environment.variables = rec {
-    #   LOREM="lorem";
-    # };
-
-    # environment.etc = {
-    #   "lorem/config.toml".source = ./config.toml;
-    # };
-  };
+    # write config for this host
+    (mkIf cfg.enable {
+      # hardware-configuration.nix
+      # configuration.nix
+    })
+  ];
 }

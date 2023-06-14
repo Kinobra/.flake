@@ -4,6 +4,7 @@
     ./alacritty
     ./bottles
     ./brave
+    ./btop
     ./cryptomator
     ./delta
     ./direnv

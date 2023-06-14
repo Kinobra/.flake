@@ -29,6 +29,7 @@ in {
     myPrograms = {
       # alacritty.enable = true;
       brave.enable = true;
+      btop.enable = true;
       discord.enable = true;
       direnv.enable = true;
       firefox.enable = true;

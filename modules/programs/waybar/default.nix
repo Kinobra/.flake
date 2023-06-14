@@ -34,7 +34,6 @@ in {
       nvtop-amd
       pulsemixer
       lm_sensors		# Tools for reading hardware sensors
-      bottom			# Yet another cross-platform graphical process/system monitor
       # libappindicator-gtk3
     ];
 
@@ -83,7 +82,7 @@ in {
               interval = 1;
               format = "<span color=\"gray\">CPU</span> {}";
               exec = "waybar-custom-cpu";
-              on-click = "swaymsg exec \"${config.home.sessionVariables.TERM} --class=floating -e btm\"";
+              on-click = "swaymsg exec \"${config.home.sessionVariables.TERM} --class=floating -e ${config.home.sessionVariables.RESOURCE_MONITOR}\"";
           };
           "custom/gpu" = {
               interval = 1;

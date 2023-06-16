@@ -45,6 +45,7 @@ in {
       nx-fetch.enable = true;
       nx-gen.enable = true;
       nx-pkgs.enable = true;
+      monero-gui.enable = true;
       mpv.enable = true;
       nushell.enable = true;
       signal.enable = true;

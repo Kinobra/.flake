@@ -165,7 +165,9 @@ in
           "${modifier}+d" = "exec ${menu}";
           "${modifier}+Shift+c" = "reload";
           # Applications
-          "${modifier}+g" = "exec ${terminal} -e ${pkgs.bottom}/bin/btm";
+          "${modifier}+g" = "exec ${terminal} --class=floating -e ${config.home.sessionVariables.RESOURCE_MONITOR}";
+          "${modifier}+s" = "exec ${terminal} --class=floating -e pulsemixer";
+          "${modifier}+n" = "exec ${terminal} --class=floating -e nmtui";
           "${modifier}+u" = "exec ${config.home.sessionVariables.BROWSER}";
           "${modifier}+Shift+e" = "mode '${mode.power}'";
           "${modifier}+r" = "mode '${mode.resize}'";

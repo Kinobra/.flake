@@ -130,6 +130,7 @@
           networking.hostName = "nixos";
           myDesktops.sway.enable = true;
           myProfiles = {
+            content-production.enable = true;
             desktop.enable = true;
             gaming.enable = true;
             virtualisation.enable = true;

@@ -515,11 +515,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1687076460,
-        "narHash": "sha256-GJXyGy4bLNDtLOO4bihIQ7eAC87xlRxdrLWIVC9vywY=",
+        "lastModified": 1687079310,
+        "narHash": "sha256-KBLTbqcbiYjqC3diCBV9ETcpjA/fHEPiDpdQDu4w3SE=",
         "owner": "~sntx",
         "repo": "nx-launcher",
-        "rev": "7cae7068edb103eeb16ec3eac1ca9f17b274ab9d",
+        "rev": "c7dc50506a76608a4f7dab4ae29fd61c0f2811db",
         "type": "sourcehut"
       },
       "original": {

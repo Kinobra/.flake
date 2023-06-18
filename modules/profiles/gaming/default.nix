@@ -13,9 +13,9 @@ in {
 
   config = mkIf cfg.enable {
     myPrograms = {
-      # lutris.enable = true;
-      # mangohud.enable = true;
-      # prismlauncher.enable = true;
+      lutris.enable = true;
+      mangohud.enable = true;
+      prismlauncher.enable = true;
       steam.enable = true;
       ttyper.enable = true;
     };

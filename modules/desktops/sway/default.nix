@@ -234,7 +234,7 @@ in
         blur enable
         blur_xray disable
         blur_passes 3
-        blur_radius 2
+        blur_radius 6
 
         # dimming
         default_dim_inactive 0.14

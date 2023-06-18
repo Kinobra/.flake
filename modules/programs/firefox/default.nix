@@ -95,7 +95,7 @@ in {
         };
 
         search = {
-          default = "SearXNG";
+          default = "DuckDuckGo";
           force = true;
           engines = {
             "SearXNG" = {

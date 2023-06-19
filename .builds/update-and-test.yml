@@ -1,0 +1,25 @@
+image: nixos/unstable
+secrets:
+  - 0d31234e-db98-4191-96cc-fc5cd6c4f013
+  - 411a80b5-d3a1-496a-a6fe-7f9db7fa7024
+environment:
+  NIX_CONFIG: "experimental-features = nix-command flakes"
+tasks:
+  - update: |
+      cd flake
+      git checkout $(git name-rev $(git rev-parse HEAD) | sed -E 's/^\S+\s(.*)$/\1/')
+      nix flake update --commit-lock-file
+  - build-apollo: |
+      nixos-rebuild build --flake ./flake#apollo
+  - build-ceres: |
+      nixos-rebuild build --flake ./flake#ceres --fast
+  - build-diana: |
+      nixos-rebuild build --flake ./flake#diana --fast
+  - build-minerva: |
+      nixos-rebuild build --flake ./flake#minerva --fast
+  - build-nixos: |
+      nixos-rebuild build --flake ./flake#nixos --fast
+  - push: |
+      cd flake
+      git checkout $(git name-rev $(git rev-parse HEAD) | sed -E 's/^\S+\s(.*)$/\1/')
+      git push git@git.sr.ht:~sntx/flake $(git name-rev $(git rev-parse HEAD) | sed -E 's/^\S+\s(.*)$/\1/')

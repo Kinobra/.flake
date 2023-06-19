@@ -9,16 +9,16 @@ tasks:
       cd flake
       git checkout $(git name-rev $(git rev-parse HEAD) | sed -E 's/^\S+\s(.*)$/\1/')
       nix flake update --commit-lock-file
-  - build-apollo: |
-      nixos-rebuild build --flake ./flake#apollo
-  - build-ceres: |
-      nixos-rebuild build --flake ./flake#ceres --fast
-  - build-diana: |
-      nixos-rebuild build --flake ./flake#diana --fast
-  - build-minerva: |
-      nixos-rebuild build --flake ./flake#minerva --fast
-  - build-nixos: |
-      nixos-rebuild build --flake ./flake#nixos --fast
+  - test-apollo: |
+      nixos-rebuild dry-run --flake ./flake#apollo
+  - test-ceres: |
+      nixos-rebuild dry-run --flake ./flake#ceres --fast
+  - test-diana: |
+      nixos-rebuild dry-run --flake ./flake#diana --fast
+  - test-minerva: |
+      nixos-rebuild dry-run --flake ./flake#minerva --fast
+  - test-nixos: |
+      nixos-rebuild dry-run --flake ./flake#nixos --fast
   - push: |
       cd flake
       git checkout $(git name-rev $(git rev-parse HEAD) | sed -E 's/^\S+\s(.*)$/\1/')

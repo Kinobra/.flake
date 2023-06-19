@@ -67,8 +67,8 @@ This config is inspired by and partially based on [dunklecat's nixos-config](htt
 
 <!-- badges -->
 
-<p style="text-align: center;">
-<a href="https://builtwithnix.org"><img src="https://builtwithnix.org/badge.svg" alt="built with nix"></a>
-<a href="https://builds.sr.ht/~sntx/flake?"><img src="https://builds.sr.ht/~sntx/flake.svg" alt="flake status"><\a>
-<!-- <a href=""><img src="" alt=""><\a> -->
-</p>
+<div style="text-align: center;">
+    <a href="https://builds.sr.ht/~sntx/flake?"><img src="https://builds.sr.ht/~sntx/flake.svg" alt="flake status"></a>
+    <a href="https://builtwithnix.org"><img src="https://builtwithnix.org/badge.svg" alt="built with nix"></a>
+    <!-- <a href=""><img src="" alt=""><\a> -->
+</div>

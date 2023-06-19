@@ -20,6 +20,9 @@ in {
         user = {
           signingkey = "0809A27405DE37A16884FD78071E9A0190AAB7E9";
         };
+        push = {
+          autoSetupRemote = true;
+        };
         pull = {
           rebase = false;
         };

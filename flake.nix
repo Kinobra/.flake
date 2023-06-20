@@ -68,6 +68,11 @@
           networking.hostName = "ceres";
           networking.domain = "valkyrja.eu";
           myProfiles.server.enable = true;
+
+          myServices = {
+            murmur.enable = true;
+            nginx.enable = true;
+          };
         }
       ];
     };

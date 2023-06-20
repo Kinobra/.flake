@@ -13,7 +13,7 @@ in {
 
   config = let
     domain = "${config.networking.domain}";
-    website = writeTextDir "index.html"
+    website = pkgs.writeTextDir "index.html"
     ''
       <!DOCTYPE html>
       <html>

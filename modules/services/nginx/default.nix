@@ -11,7 +11,9 @@ in {
     };
   };
 
-  config = mkIf cfg.enable {
+  config = let
+    domain = "${config.networking.domain}";
+  in mkIf cfg.enable {
     networking.firewall = {
       allowedTCPPorts = [ 80 443 ];
     };
@@ -20,11 +22,16 @@ in {
       enable = true;
       recommendedProxySettings = true;
       recommendedTlsSettings = true;
+      virtualHosts."${domain}" = {
+        addSSL = true;
+        enableACME = true;
+        root = "/var/www/${domain}";
+      };
     };
 
     security.acme = {
       acceptTerms = true;
-      defaults.email = "${config.user.name}@${config.networking.domain}";
+      defaults.email = "${config.user.name}@${domain}";
     };
   };
 }

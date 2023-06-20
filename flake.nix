@@ -70,7 +70,7 @@
           myProfiles.server.enable = true;
 
           myServices = {
-            murmur.enable = true;
+            # murmur.enable = true;
             nginx.enable = true;
           };
         }

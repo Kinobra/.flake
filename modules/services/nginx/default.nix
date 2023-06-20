@@ -13,6 +13,22 @@ in {
 
   config = let
     domain = "${config.networking.domain}";
+    website = writeTextDir "index.html"
+    ''
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <title>valkyrja.eu</title>
+          <style>
+            body { text-align: center; }
+          </style>
+        </head>
+        <body>
+          <h1>valkyrja.eu</h1>
+          <p>This is a very basic static website generated with nix!</p>
+        </body>
+      </html>
+    '';
   in mkIf cfg.enable {
     networking.firewall = {
       allowedTCPPorts = [ 80 443 ];
@@ -25,7 +41,7 @@ in {
       virtualHosts."${domain}" = {
         addSSL = true;
         enableACME = true;
-        root = "/var/www/${domain}";
+        root = "${website}";
       };
     };
 

@@ -31,8 +31,10 @@ in {
       waybar-custom-gpu
 
       ripgrep
+      nvtop-amd
       pulsemixer
       lm_sensors		# Tools for reading hardware sensors
+      bottom			# Yet another cross-platform graphical process/system monitor
       # libappindicator-gtk3
     ];
 
@@ -46,9 +48,9 @@ in {
           modules-left = [ "custom/menu" "sway/workspaces" "sway/mode" "sway/window" ];
           modules-center = [ "clock" ];
           modules-right = [
-            (optionalString (builtins.elem config.networking.hostName [ "nixos" "minerva" ]) "custom/cpu")
-            (optionalString (builtins.elem config.networking.hostName [ "nixos" ]) "custom/gpu")
-            (optionalString (builtins.elem config.networking.hostName [ "minerva" ]) "battery")
+            (optionalString (builtins.elem config.networking.hostName ["nixos" "minerva" "dominus"]) "custom/cpu")
+            (optionalString (builtins.elem config.networking.hostName ["nixos"]) "custom/gpu")
+            (optionalString (builtins.elem config.networking.hostName ["minerva" "dominus"]) "battery")
             "tray" "pulseaudio" "network" ];
 
           "custom/menu" = {
@@ -81,15 +83,13 @@ in {
               interval = 1;
               format = "<span color=\"gray\">CPU</span> {}";
               exec = "waybar-custom-cpu";
-              on-click = "swaymsg exec \"${config.home.sessionVariables.TERM} --class=floating -e ${config.home.sessionVariables.RESOURCE_MONITOR}\"";
+              on-click = "swaymsg exec \"${config.home.sessionVariables.TERM} --class=floating -e btm\"";
           };
-          "custom/gpu" = let
-            nvtop = "${pkgs.nvtop-amd}/bin/nvtop";
-          in {
+          "custom/gpu" = {
               interval = 1;
               format = "<span color=\"gray\">GPU</span> {}";
               exec = "waybar-custom-gpu";
-              on-click = "swaymsg exec \"${config.home.sessionVariables.TERM} --class=floating -e ${nvtop}\"";
+              on-click = "swaymsg exec \"${config.home.sessionVariables.TERM} --class=floating -e nvtop\"";
           };
           "battery" = {
             format = "<span color=\"gray\">BAT</span> {capacity}%";

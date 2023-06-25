@@ -4,7 +4,6 @@
     ./alacritty
     ./bottles
     ./brave
-    ./btop
     ./cryptomator
     ./delta
     ./direnv
@@ -16,7 +15,6 @@
     ./helix
     ./helvum
     ./imv
-    ./kdenlive
     ./keepassxc
     ./kitty
     ./lf
@@ -33,7 +31,6 @@
     ./nx-gen
     ./nx-launcher
     ./nx-pkgs
-    ./obs-studio
     ./prismlauncher
     ./signal
     ./steam
@@ -41,7 +38,6 @@
     ./swww
     ./ttyper
     ./waybar
-    ./wshowkeys
     ./yt-dlp
     ./zathura
     ./zellij

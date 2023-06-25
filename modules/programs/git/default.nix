@@ -14,12 +14,12 @@ in {
   config = mkIf cfg.enable {
     home.programs.git = {
       enable = true;
-      userName  = "sntx";
-      userEmail = "sntx.htqjd@simplelogin.com";
+      userName  = "kinobra";
+      userEmail = "116380629+Kinobra@users.noreply.github.com";
       extraConfig = {
-        user = {
-          signingkey = "0809A27405DE37A16884FD78071E9A0190AAB7E9";
-        };
+#         user = {
+#           signingkey = "0809A27405DE37A16884FD78071E9A0190AAB7E9";
+#         };
         push = {
           autoSetupRemote = true;
         };
@@ -29,11 +29,11 @@ in {
         init = {
           defaultBranch = "main";
         };
-        commit = {
-          gpgsign = true;
-        };
+#         commit = {
+#           gpgsign = true;
+#         };
         core = {
-          sshCommand = "ssh -i /home/${config.user.name}/.ssh/sourcehut";
+          sshCommand = "ssh -i /home/${config.user.name}/.ssh/github";
           # sshCommand = "ssh -i /home/sntx/.ssh/gitlab_uni";
         };
       };

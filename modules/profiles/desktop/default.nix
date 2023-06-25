@@ -27,9 +27,8 @@ in {
     # };
 
     myPrograms = {
-      # alacritty.enable = true;
+      alacritty.enable = true;
       brave.enable = true;
-      btop.enable = true;
       discord.enable = true;
       direnv.enable = true;
       firefox.enable = true;
@@ -39,13 +38,12 @@ in {
       helix.enable = true;
       imv.enable = true;
       keepassxc.enable = true;
-      kitty.enable = true;
+      # kitty.enable = true;
       lf.enable = true;
       ncmpc.enable = true;
       nx-fetch.enable = true;
       nx-gen.enable = true;
       nx-pkgs.enable = true;
-      monero-gui.enable = true;
       mpv.enable = true;
       nushell.enable = true;
       signal.enable = true;

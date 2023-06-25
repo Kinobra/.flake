@@ -102,7 +102,7 @@ in
         window = {
           border = borders;
           commands = [
-            { criteria.app_id = "^launcher$";  command = "floating enable, sticky enable, move position center, resize set 61 ppt 61 ppt"; }
+            { criteria.app_id = "^launcher$";  command = "floating enable, sticky enable, move position center, resize set 30 ppt 60 ppt"; }
             { criteria.app_id = "^floating$";  command = "floating enable, move position center, resize set 86 ppt 86 ppt"; }
             { criteria.app_id = "imv|mpv|org\\.keepassxc\\.KeePassXC";  command = "floating enable"; }
             { criteria.app_id = "com.github.wwmm.easyeffects";  command = "move scratchpad"; }
@@ -165,9 +165,7 @@ in
           "${modifier}+d" = "exec ${menu}";
           "${modifier}+Shift+c" = "reload";
           # Applications
-          "${modifier}+g" = "exec ${terminal} --class=floating -e ${config.home.sessionVariables.RESOURCE_MONITOR}";
-          "${modifier}+s" = "exec ${terminal} --class=floating -e pulsemixer";
-          "${modifier}+n" = "exec ${terminal} --class=floating -e nmtui";
+          "${modifier}+g" = "exec ${terminal} -e ${pkgs.bottom}/bin/btm";
           "${modifier}+u" = "exec ${config.home.sessionVariables.BROWSER}";
           "${modifier}+Shift+e" = "mode '${mode.power}'";
           "${modifier}+r" = "mode '${mode.resize}'";
@@ -234,7 +232,7 @@ in
         blur enable
         blur_xray disable
         blur_passes 3
-        blur_radius 6
+        blur_radius 2
 
         # dimming
         default_dim_inactive 0.14

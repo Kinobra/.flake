@@ -29,7 +29,6 @@ in {
         enableACME = true;
         locations."/" = {
           proxyPass = "localhost:${toString config.services.murmur.port}";
-          proxyWebsockets = true;
         };
       };
     };

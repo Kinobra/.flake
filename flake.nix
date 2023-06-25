@@ -68,11 +68,6 @@
           networking.hostName = "ceres";
           networking.domain = "valkyrja.eu";
           myProfiles.server.enable = true;
-
-          myServices = {
-            # murmur.enable = true;
-            nginx.enable = true;
-          };
         }
       ];
     };
@@ -115,9 +110,6 @@
           myPrograms = {
             light.enable = true;
           };
-          myServices = {
-            blueman.enable = true;
-          };
         }
       ];
     };
@@ -135,7 +127,6 @@
           networking.hostName = "nixos";
           myDesktops.sway.enable = true;
           myProfiles = {
-            content-production.enable = true;
             desktop.enable = true;
             gaming.enable = true;
             virtualisation.enable = true;
@@ -148,6 +139,48 @@
           myServices = {
             easyeffects.enable = true;
           };
+        }
+      ];
+    };
+  # Define a laptop called "dominus"
+    nixosConfigurations."dominus" = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = {inherit inputs;};
+      modules = let
+        pkgs = nixpkgs.legacyPackages."x86_64-linux";
+      in [
+        home-manager.nixosModules.home-manager
+        (import ./modules)
+        {
+          nixpkgs.config.allowUnfree = true;
+
+          networking.hostName = "dominus";
+          myDesktops.sway.enable = true;
+          myProfiles = {
+            desktop.enable = true;
+            virtualisation.enable = true;
+            # gaming.enable = true;            
+          };
+          myThemes."abyss".enable = true;
+
+          myPrograms = {
+            light.enable = true;
+          };
+          nixpkgs.config.packageOverrides = pkgs: {
+            vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
+          };
+          hardware.opengl = {
+            extraPackages = with pkgs; [
+              intel-media-driver # LIBVA_DRIVER_NAME=iHD
+              vaapiIntel         # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+              vaapiVdpau
+              libvdpau-va-gl
+            ];
+          };
+          home.packages = with pkgs; [
+            winetricks
+            wine
+          ];
         }
       ];
     };

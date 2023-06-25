@@ -1,0 +1,14 @@
+image: nixos/unstable
+secrets:
+  - 0d31234e-db98-4191-96cc-fc5cd6c4f013
+  - 411a80b5-d3a1-496a-a6fe-7f9db7fa7024
+environment:
+  NIX_CONFIG: "experimental-features = nix-command flakes"
+tasks:
+  - update: |
+      cd flake
+      git checkout $(git name-rev $(git rev-parse HEAD) | sed -E 's/^\S+\s(.*)$/\1/')
+      nix flake update --commit-lock-file
+  - push: |
+      cd flake
+      git push git@git.sr.ht:~sntx/flake HEAD:$(git name-rev $(git rev-parse HEAD) | sed -E 's/^\S+\s(.*)$/\1/')

@@ -28,10 +28,10 @@ with lib;
     myHardware."${config.networking.hostName}".enable = true;
 
     user = {
-      name = "sntx";
+      name = "delta";
       # name = let name = builtins.getEnv "USER";
-      description = "sntx";
-      group = "sntx";
+      description = "delta";
+      group = "users";
       extraGroups = [ "wheel" "network" ];
       # extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
       isNormalUser = true;

@@ -2,7 +2,6 @@
 {
   imports = [
     # ./borgbackup
-    ./blueman
     ./easyeffects
     ./fail2ban
     ./mako

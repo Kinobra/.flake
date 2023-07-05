@@ -2,7 +2,7 @@
 
 with lib;
 let cfg = config.myDesktops.kde;
-
+programs.dconf.enable = true;
 in
 {
   options.myDesktops.kde = {

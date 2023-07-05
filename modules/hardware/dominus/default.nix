@@ -22,20 +22,20 @@ in {
       # to /etc/nixos/configuration.nix instead.
       hardware.enableRedistributableFirmware = lib.mkDefault true;
 
-      boot.initrd.availableKernelModules = [ "ehci_pci" "ahci" "firewire_ohci" "usbhid" "usb_storage" "sd_mod" "sr_mod" "sdhci_pci" ];
+      boot.initrd.availableKernelModules = [ "ehci_pci" "ahci" "firewire_ohci" "usb_storage" "sd_mod" "sr_mod" "sdhci_pci" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  boot.initrd.luks.devices."luks-81ea58ca-2c91-455b-a1db-ab9c38c3ce2e".device = "/dev/disk/by-uuid/81ea58ca-2c91-455b-a1db-ab9c38c3ce2e";
+  # boot.initrd.luks.devices."luks-81ea58ca-2c91-455b-a1db-ab9c38c3ce2e".device = "/dev/disk/by-uuid/81ea58ca-2c91-455b-a1db-ab9c38c3ce2e";
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/04aaae47-03b0-4b25-ade0-0b738226a2dd";
+    { device = "/dev/disk/by-uuid/947aa863-f04a-482a-9b23-361cf1c08bd6";
       fsType = "ext4";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/af73ce7b-1510-4f45-bc65-5a4eddb1631d"; }
+    [ { device = "/dev/disk/by-uuid/9e3135f6-aac9-4b97-ad88-411ee7680ee9"; }
     ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking

@@ -155,8 +155,7 @@
           nixpkgs.config.allowUnfree = true;
 
           networking.hostName = "dominus";
-          myDesktops.kde.enable = true;
-            # myDesktops.sway.enable = true;
+          myDesktops.sway.enable = true;
           myProfiles = {
             desktop.enable = true;
             virtualisation.enable = true;

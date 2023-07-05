@@ -28,9 +28,9 @@ with lib;
     myHardware."${config.networking.hostName}".enable = true;
 
     user = {
-      name = "delta";
+      name = "kinobra";
       # name = let name = builtins.getEnv "USER";
-      description = "delta";
+      description = "kinobra";
       group = "users";
       extraGroups = [ "wheel" "network" ];
       # extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
